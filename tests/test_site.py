@@ -174,8 +174,25 @@ class ChiffresOrphelins(unittest.TestCase):
     s'était glissé en tête de la page d'accueil, sans source et sans date.
     """
 
+    # L'ordre des alternatives compte : « Md€ » doit être tenté avant « M€ »,
+    # et « M€ » avant « € », sinon « 30,5 Md€ » se lit « 30,5 » suivi d'un
+    # « d€ » qui n'existe pas.
+    #
+    # Le README promettait qu'AUCUN chiffre écrit au fil d'une phrase
+    # n'échappait à la table. C'était faux : le motif ne connaissait que le
+    # pourcentage, l'euro, le million et le milliard — un « 29 ans », un
+    # « 27 000 km » ou un « 50 M€ » passaient sans être vus. Les unités de ce
+    # site y sont désormais toutes.
+    #
+    # Deux familles d'unités, et elles ne se lisent pas pareil. Les symboles —
+    # « % », « € » — peuvent être collés au nombre ou séparés de lui. Les
+    # unités écrites en lettres exigent une séparation : sans cela,
+    # « conso_gazole_100km », qui est un NOM DE PARAMÈTRE et non un chiffre,
+    # se lirait « 100 km ».
     MOTIF = re.compile(
-        r"\d[\d\u202f\u00a0]*(?:,\d+)?\s?(?:%|Md€|€|millions?|milliards?)")
+        r"\d[\d\u202f\u00a0]*(?:,\d+)?"
+        r"(?:\s?(?:%|Md€|M€|€)"
+        r"|[\s\u202f\u00a0](?:millions?|milliards?|km|ans|kWh|MWh)\b)")
 
     @classmethod
     def normaliser(cls, texte: str) -> str:
@@ -371,3 +388,114 @@ class RessourcesTierces(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SimulateurNAdditionnePas(unittest.TestCase):
+    """Le calcul ne doit plus additionner des agrégats qui se recouvrent.
+
+    C'est la faute la plus grave qu'ait commise ce site, et elle était
+    invisible : la colonne « ce que vous payez sans le voir » ajoutait la
+    subvention des trajets de l'usager, sa part des concours publics et le
+    versement mobilité de son employeur — alors que l'agrégat des concours
+    publics COMPREND le versement mobilité et les subventions d'exploitation.
+    Le même euro était compté jusqu'à trois fois, et le total ainsi gonflé
+    était précisément le chiffre que la page existe pour établir.
+
+    Un contradicteur muni d'un tableur l'aurait trouvé en dix minutes. Ce
+    témoin interdit qu'il revienne.
+    """
+
+    AGREGATS = ("concours_publics_transports", "versement_mobilite_total")
+
+    def corps_de(self, nom: str) -> str:
+        source = (RACINE / "moteur" / "js" / "simulateur.js").read_text(
+            encoding="utf-8")
+        debut = source.index(f"function {nom}(")
+        return source[debut:source.index("\n}", debut)]
+
+    def test_les_flux_invisibles_ne_lisent_aucun_agregat_national(self) -> None:
+        corps = self.corps_de("fluxInvisibles")
+        for agregat in self.AGREGATS:
+            with self.subTest(agregat=agregat):
+                self.assertNotIn(
+                    agregat, corps,
+                    f"fluxInvisibles lit « {agregat} » : cet agrégat recouvre "
+                    "la subvention des trajets de l'usager, et l'additionner "
+                    "compte le même euro deux fois. Les repères collectifs "
+                    "s'affichent à côté du calcul, pas dedans.",
+                )
+
+    def test_les_reperes_collectifs_existent_et_sont_affiches(self) -> None:
+        """Les sortir du total ne doit pas revenir à les cacher."""
+        source = (RACINE / "moteur" / "js" / "simulateur.js").read_text(
+            encoding="utf-8")
+        self.assertIn("function reperesCollectifs(", source)
+        for agregat in self.AGREGATS:
+            self.assertIn(agregat, self.corps_de("reperesCollectifs"))
+
+    def test_la_reserve_dit_que_l_agregat_ne_s_additionne_pas(self) -> None:
+        reserves = dict(donnees.RESERVES_SIMULATEUR)
+        self.assertIn("concours_publics_transports", reserves)
+        self.assertIn("COMPREND", reserves["concours_publics_transports"])
+
+
+class FormulaireSansEnvoi(unittest.TestCase):
+    """La promesse « rien n'est envoyé nulle part » ne doit pas dépendre du JS.
+
+    Le formulaire était en ``method="get"`` : si le module ne se chargeait pas,
+    un clic sur « Calculer » envoyait le kilométrage, la motorisation et
+    l'abonnement dans l'URL — donc au serveur, qui les journalise. La page
+    promet le contraire, et une promesse qui ne tient que lorsque tout marche
+    n'en est pas une.
+    """
+
+    def test_le_formulaire_n_a_ni_methode_ni_adresse_d_envoi(self) -> None:
+        page = (RACINE / "simulateur.html").read_text(encoding="utf-8")
+        formulaire = re.search(r"<form[^>]*>", page)
+        self.assertIsNotNone(formulaire)
+        balise = formulaire.group(0)
+        for interdit in ("method=", "action="):
+            with self.subTest(attribut=interdit):
+                self.assertNotIn(interdit, balise, balise)
+
+    def test_aucun_bouton_de_soumission(self) -> None:
+        page = (RACINE / "simulateur.html").read_text(encoding="utf-8")
+        self.assertNotIn('type="submit"', page)
+
+
+class MentionsLegales(unittest.TestCase):
+    """Un site politique sans éditeur nommé se fait signaler en une journée."""
+
+    def test_la_page_nomme_editeur_directeur_et_hebergeur(self) -> None:
+        page = (RACINE / "mentions.html").read_text(encoding="utf-8")
+        for mention in ("Éditeur", "Directeur de la publication", "Hébergeur",
+                        gabarit.EDITEUR, gabarit.HEBERGEUR):
+            with self.subTest(mention=mention[:40]):
+                self.assertIn(mention, page)
+
+    def test_le_pied_de_page_y_renvoie_depuis_toutes_les_pages(self) -> None:
+        for fichier, *_ in construire_site.PAGES:
+            with self.subTest(page=fichier):
+                texte = (RACINE / fichier).read_text(encoding="utf-8")
+                self.assertIn('href="mentions.html"', texte)
+
+
+class ChaqueMesurePorteSonObjection(unittest.TestCase):
+    """La page Réforme promet une objection par mesure : qu'elle la porte.
+
+    C'est la promesse la plus facile à rompre en ajoutant une mesure, et la
+    plus coûteuse à rompre : une mesure sans contradiction publiée est
+    exactement ce que ce site reproche aux programmes qu'il critique.
+    """
+
+    def test_autant_d_objections_que_de_mesures(self) -> None:
+        page = (RACINE / "reforme.html").read_text(encoding="utf-8")
+        mesures = len(re.findall(r"<h3[^>]*>\s*\d+\.", page))
+        objections = page.count("L&#x27;objection la plus sérieuse")
+        objections += page.count("L'objection la plus sérieuse")
+        self.assertGreaterEqual(mesures, 8, "les huit mesures doivent être là")
+        self.assertGreaterEqual(
+            objections, mesures,
+            f"{mesures} mesures mais {objections} objections : une mesure a "
+            "été ajoutée sans la critique qu'on lui oppose.",
+        )

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Écrit le site : sept pages HTML, et le paquet de données du simulateur.
+"""Écrit le site : huit pages HTML, et le paquet de données du simulateur.
 
     python3 scripts/construire_site.py
 
@@ -40,36 +40,46 @@ PAGES = (
      "six défauts qui se tiennent : un prix qui ne dit plus rien, des "
      "contrats sans prix de référence, la dette comme mode de financement, "
      "l'évaluation après la décision, l'entretien sacrifié, l'interdiction "
-     "à la place du prix.",
+     "à la place du prix — plus deux sujets que personne ne regarde, le fret "
+     "et la fin des concessions autoroutières.",
      pages.diagnostic),
     ("comparaisons.html",
-     "Ailleurs : cinq systèmes de transport, dont un qui a échoué",
+     "Ailleurs : six systèmes de transport, dont deux qui ont échoué",
      "Suisse, Allemagne, Italie, Royaume-Uni, Japon : financement affecté, "
      "appels d'offres régionaux, concurrence sur la grande vitesse, "
-     "privatisation — et l'échec britannique des franchises, cité contre "
-     "notre propre thèse.",
+     "privatisation — et deux échecs cités contre notre propre thèse, les "
+     "franchises britanniques et l'écotaxe française.",
      pages.comparaisons),
     ("reforme.html",
-     "La réforme, en six mesures",
+     "La réforme, en huit mesures",
      "Mettre chaque contrat d'exploitation en appel d'offres, publier le coût "
      "de chaque ligne, payer l'usage de la route plutôt que sa possession, "
      "tarifer les nuisances, contre-expertiser les grands projets avant de "
-     "les voter, libérer l'offre de mobilité.",
+     "les voter, libérer l'offre de mobilité, rendre des sillons au fret, et "
+     "décider maintenant du sort des autoroutes en 2031.",
      pages.reforme),
     ("simulateur.html",
      "Ce que vos déplacements vous coûtent vraiment — le simulateur",
-     "Taxes sur le carburant, péages, abonnement, subvention de vos propres "
-     "trajets, concours publics, versement mobilité : six flux, dont quatre "
-     "invisibles. Le simulateur les additionne dans votre navigateur, sans "
-     "rien envoyer nulle part.",
+     "D'un côté les taxes sur l'énergie, les péages et l'abonnement que vous "
+     "versez ; de l'autre ce que la collectivité verse pour les trajets que "
+     "vous faites. Le calcul se fait dans votre navigateur, et le formulaire "
+     "n'a aucun moyen d'envoyer vos réponses.",
      pages.simulateur),
     ("objections.html",
-     "Les dix objections, y compris les bonnes",
-     "Fiasco britannique, fermeture des petites lignes, rentabilité, vie "
-     "privée, ruraux, zones à faibles émissions, conditions de travail, "
-     "absence de chiffrage : les dix objections les plus sérieuses à ce "
-     "programme, et nos réponses — y compris quand elles sont incomplètes.",
+     "Les seize objections, y compris les bonnes",
+     "Fiasco britannique, écotaxe abandonnée, petites lignes, vie privée, "
+     "ruraux, zones à faibles émissions, voitures électriques, gratuité, "
+     "recentralisation, absence de chiffrage : les seize objections les plus "
+     "sérieuses à ce programme, et nos réponses — y compris les trois qui "
+     "sont incomplètes.",
      pages.objections),
+    ("mentions.html",
+     "Qui publie ce site, et ce qu'il ne collecte pas",
+     "Éditeur, directeur de la publication, hébergeur, financement, "
+     "licences — et ce que ce site fait de votre visite : rien. Aucun "
+     "cookie, aucune mesure d'audience, aucune ressource tierce, et un "
+     "simulateur qui n'a aucun moyen de transmettre vos réponses.",
+     pages.mentions),
     ("donnees.html",
      "Données et sources",
      "Tous les chiffres cités sur ce site, avec leur source, leur millésime "

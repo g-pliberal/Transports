@@ -99,34 +99,50 @@ function fluxVisibles(saisie) {
 }
 
 /**
- * Ce qui passe ailleurs : ce que vos déplacements coûtent sans passer par vous.
+ * Ce que vos déplacements coûtent à d'autres que vous.
  *
- * C'est le seul fait que ce simulateur cherche à établir. Aucune de ces trois
- * lignes n'apparaît sur un document que reçoit un voyageur, et leur somme
- * dépasse, pour la plupart des gens, ce qu'ils croient dépenser.
+ * UNE SEULE LIGNE, et c'est une correction. Ce simulateur en additionnait
+ * trois — la subvention de vos trajets, votre part des concours publics et le
+ * versement mobilité de votre employeur — alors que les deux dernières
+ * FINANCENT la première. L'agrégat des concours publics comprend le versement
+ * mobilité et les subventions d'exploitation des réseaux conventionnés : les
+ * additionner comptait le même euro jusqu'à trois fois, et gonflait d'autant
+ * le seul chiffre que cette page existe pour établir.
+ *
+ * Les deux ordres de grandeur collectifs n'ont pas disparu pour autant : ils
+ * sont affichés à côté du calcul par `reperesCollectifs`, jamais dedans.
  */
 function fluxInvisibles(saisie, abonnement) {
-  const p = PARAMETRES;
   const part = partUsager(saisie.reseau);
   const subvention = part > 0 ? abonnement * (1 / part - 1) : 0;
-  const concours = p.concours_publics_transports / p.population;
-  const versement = saisie.emploi === "salarie"
-    ? p.versement_mobilite_total / p.actifs_occupes : 0;
-
   const lignes = [
     ["Subvention de vos propres trajets", subvention,
      `Votre abonnement couvre ${pourcentage(part, 0)} du coût du service : la `
-     + "collectivité verse le reste pour les trajets que vous faites."],
-    ["Votre part des concours publics aux transports", concours,
-     "Le total national rapporté à un habitant. Agrégat reconstitué, et la "
-     + "page Données le dit."],
-    ["Versement mobilité payé par votre employeur", versement,
-     "Un prélèvement sur la masse salariale est une part de ce que votre "
-     + "travail rapporte, même s'il ne figure pas sur votre fiche de paie."],
+     + "collectivité verse le reste pour les trajets que vous faites, par le "
+     + "versement mobilité et par le budget de votre région ou de votre "
+     + "intercommunalité."],
   ].filter(([, montant]) => montant > 0);
 
   const total = lignes.reduce((somme, [, montant]) => somme + montant, 0);
-  return { lignes, total, subvention };
+  return { lignes, total, subvention, part };
+}
+
+/**
+ * Deux ordres de grandeur collectifs, qui ne s'additionnent à rien.
+ *
+ * Ils RECOUVRENT en partie la subvention calculée plus haut : l'agrégat des
+ * concours publics comprend le versement mobilité, lequel finance lui-même
+ * une part des trajets conventionnés. Les montrer à côté du total, et non
+ * dedans, est la seule façon honnête de les montrer — ils situent l'enjeu,
+ * ils ne s'ajoutent pas à votre facture.
+ */
+function reperesCollectifs(saisie) {
+  const p = PARAMETRES;
+  return {
+    concours: p.concours_publics_transports / p.population,
+    versement: saisie.emploi === "salarie"
+      ? p.versement_mobilite_total / p.actifs_occupes : 0,
+  };
 }
 
 /**
@@ -190,13 +206,54 @@ function scenario(titre, categorie, total, largeur, classe, glose) {
  */
 function avertissementTotal(visible, invisible) {
   const total = visible + invisible;
+  if (invisible <= 0) {
+    return `<div class="note resume">
+  <p><strong>Vos trajets ne sont pas subventionnés, et c'est aussi un
+  fait.</strong> Vous payez ${euros(visible)} par an, et aucune collectivité ne
+  verse quoi que ce soit pour les déplacements que vous faites : la voiture n'a
+  pas de subvention d'exploitation. Ce que ce programme change pour vous n'est
+  donc pas le montant — c'est ce que cet argent finance, et le fait que rouler
+  à l'heure et à l'endroit où cela coûte cher aux autres se paie enfin comme
+  tel.</p>
+</div>`;
+  }
   return `<div class="note resume">
   <p><strong>Le total ne baisse pas : il se voit.</strong> Ce programme ne
   promet pas de vous prélever moins la première année — il promet que les
   ${euros(total)} que vos déplacements coûtent chaque année s'écrivent enfin :
-  ${euros(visible)} que vous payez au guichet, ${euros(invisible)} que vous
-  payez ailleurs. Un prélèvement qu'on ne voit pas n'est jamais discuté, et ce
-  qui n'est jamais discuté ne s'améliore pas.</p>
+  ${euros(visible)} que vous payez au guichet, ${euros(invisible)} que d'autres
+  paient pour vos trajets. Un prélèvement qu'on ne voit pas n'est jamais
+  discuté, et ce qui n'est jamais discuté ne s'améliore pas.</p>
+</div>`;
+}
+
+/**
+ * Les repères collectifs, avec la phrase qui interdit de les additionner.
+ *
+ * Elle est en gras et au-dessus des montants, et non en note : c'est
+ * précisément la faute que cette page a commise, et un lecteur qui ne lit que
+ * les chiffres doit buter sur l'avertissement avant de les lire.
+ */
+function reperes(valeurs) {
+  const lignes = [
+    ["Concours publics aux transports, par habitant", valeurs.concours,
+     "Agrégat national reconstitué, rapporté à un habitant."],
+    ["Versement mobilité, par actif occupé", valeurs.versement,
+     "Payé par les employeurs, et compris dans l'agrégat ci-dessus."],
+  ].filter(([, montant]) => montant > 0);
+  if (!lignes.length) { return ""; }
+  const corps = lignes.map(([libelle, montant, glose]) =>
+    `<li><strong>${euros(montant)} par an</strong> — ${echapper(libelle)}.
+     <span class="discret">${echapper(glose)}</span></li>`).join("");
+  return `<div class="note">
+  <div>
+  <p><strong>Deux repères, qui ne s'ajoutent pas au calcul ci-dessus.</strong>
+  Le total des concours publics comprend le versement mobilité et les
+  subventions qui paient vos propres trajets : l'ajouter à ceux-ci compterait
+  le même euro deux ou trois fois. Cette page l'a fait jusqu'en septembre 2026
+  et ne le fait plus.</p>
+  <ul class="serree">${corps}</ul>
+  </div>
 </div>`;
 }
 
@@ -204,6 +261,7 @@ function rendre(saisie) {
   const visibles = fluxVisibles(saisie);
   const invisibles = fluxInvisibles(saisie, visibles.abonnement);
   const bascule = substitution(saisie);
+  const collectifs = reperesCollectifs(saisie);
   const total = visibles.total + invisibles.total;
   const echelle = Math.max(visibles.total, invisibles.total, 1);
 
@@ -216,18 +274,39 @@ function rendre(saisie) {
   const reserves = RESERVES.map(({ parametre, texte }) =>
     `<li><strong>${echapper(parametre)}</strong> — ${echapper(texte)}</li>`).join("");
 
-  const gloseBascule = bascule.taxes > 0
-    ? `À l'usage, vos kilomètres coûteraient <strong>${euros(bascule.redevance)}
-       par an</strong> de redevance, contre <strong>${euros(bascule.taxes)}</strong>
-       de taxes sur l'énergie aujourd'hui, soit
+  // Le cas du véhicule électrique ne peut PAS être servi par la phrase
+  // générale. La redevance étant calibrée sur un véhicule thermique moyen,
+  // elle multiplie par plus de six ce qu'un véhicule électrique acquitte,
+  // et un résultat pareil sans explication est une capture d'écran que nos
+  // adversaires feront à notre place. Nous l'affichons, et nous le motivons.
+  let gloseBascule;
+  if (bascule.taxes <= 0) {
+    gloseBascule = `Sans véhicule, la substitution de la redevance d'usage à la
+       taxe sur les carburants ne change rien pour vous — sinon que le
+       financement des routes cesserait de dépendre d'une taxe qui s'éteint
+       avec le moteur thermique.`;
+  } else if (saisie.motorisation === "electrique") {
+    gloseBascule = `À l'usage, vos kilomètres coûteraient
+       <strong>${euros(bascule.redevance)} par an</strong> de redevance, contre
+       <strong>${euros(bascule.taxes)}</strong> d'accise sur l'électricité
+       aujourd'hui. L'écart est considérable, et nous préférons l'afficher que
+       le laisser découvrir : un véhicule électrique use la chaussée comme un
+       autre et ne paie presque rien pour elle, parce qu'une taxe au litre ne
+       sait taxer qu'un litre. C'est l'angle mort qui condamne le financement
+       actuel — et c'est aussi une hausse brutale pour qui a acheté son
+       véhicule sous un autre régime fiscal. C'est pourquoi le programme
+       propose une entrée progressive sur la durée d'un mandat, et non le
+       tarif plein dès la première année.`;
+  } else {
+    gloseBascule = `À l'usage, vos kilomètres coûteraient
+       <strong>${euros(bascule.redevance)} par an</strong> de redevance, contre
+       <strong>${euros(bascule.taxes)}</strong> de taxes sur l'énergie
+       aujourd'hui, soit
        ${bascule.ecart >= 0 ? "environ " + euros(bascule.ecart) + " de plus"
                             : "environ " + euros(-bascule.ecart) + " de moins"}.
        La bascule se fait à prélèvement constant POUR L'ÉTAT, pas pour chaque
-       conducteur : rouler peu coûte moins, rouler beaucoup coûte plus.`
-    : `Sans véhicule, la substitution de la redevance d'usage à la taxe sur
-       les carburants ne change rien pour vous — sinon que le financement des
-       routes cesserait de dépendre d'une taxe qui s'éteint avec le moteur
-       thermique.`;
+       conducteur : rouler peu coûte moins, rouler beaucoup coûte plus.`;
+  }
 
   return `
 <h2>Ce que vos déplacements coûtent</h2>
@@ -235,20 +314,26 @@ ${scenario("Ce que vous payez au guichet", "payé directement", visibles.total,
     partVisible, "actuel",
     `Taxes sur l'énergie, péages et abonnement : `
     + `${euros(visibles.total / 12)} par mois, que vous versez vous-même.`)}
-${scenario("Ce que vous payez sans le voir", "payé ailleurs", invisibles.total,
-    partInvisible, "liberal",
-    `Subvention de vos propres trajets, part des concours publics, versement `
-    + `mobilité : ${pourcentage(invisibles.total / (total || 1), 0)} du coût `
-    + `total de vos déplacements, dont aucun document ne vous informe.`)}
+${scenario("Ce que d'autres paient pour vos trajets", "payé par la collectivité",
+    invisibles.total, partInvisible, "liberal",
+    invisibles.total > 0
+      ? `La subvention de vos propres déplacements : `
+        + `${pourcentage(invisibles.total / (total || 1), 0)} de ce qu'ils `
+        + `coûtent au total, et aucun document ne vous en informe.`
+      : `Aucune : la voiture ne reçoit pas de subvention d'exploitation. `
+        + `Ce que vous payez, vous le payez en entier.`)}
 
 ${avertissementTotal(visibles.total, invisibles.total)}
 
 <div class="paire">
   <div>${tableauLignes(visibles.lignes, visibles.total,
     "Ce qui passe par vous")}</div>
-  <div>${tableauLignes(invisibles.lignes, invisibles.total,
-    "Ce qui passe ailleurs")}</div>
+  <div>${invisibles.lignes.length
+    ? tableauLignes(invisibles.lignes, invisibles.total, "Ce qui passe ailleurs")
+    : ""}</div>
 </div>
+
+${reperes(collectifs)}
 
 <div class="note">
   <div>
@@ -307,6 +392,17 @@ async function demarrer() {
     sortie.innerHTML = rendre(lireSaisie(formulaire));
   };
 
+  // Le bouton n'est PAS un bouton de soumission, et le formulaire n'a ni
+  // méthode ni adresse d'envoi. C'est voulu : tant que le formulaire était en
+  // `method="get"`, un script non chargé suffisait à ce qu'un clic envoie le
+  // kilométrage et l'abonnement dans l'URL — donc au serveur, qui les
+  // journalise. La page promet l'inverse, et une promesse qui ne tient que
+  // si le JavaScript se charge n'est pas une promesse.
+  const bouton = document.getElementById("calculer");
+  if (bouton) { bouton.addEventListener("click", calculer); }
+  // Ceinture : un navigateur peut tenter une soumission implicite (touche
+  // Entrée). Sans action ni méthode elle ne sortirait pas de la page, mais
+  // autant l'arrêter avant.
   formulaire.addEventListener("submit", calculer);
   // Le résultat suit la saisie : recalculer à chaque changement évite d'avoir
   // à valider pour voir l'effet d'un kilométrage ou d'un choix de réseau, qui
