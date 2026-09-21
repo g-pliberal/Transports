@@ -1,12 +1,12 @@
 {
   "avertissement": "Écrit par scripts/construire_site.py depuis src/transports/donnees.py. Ne pas modifier à la main.",
   "parametres": {
-    "ticpe_gazole_litre": 0.5981,
+    "ticpe_gazole_litre": 0.594,
     "ticpe_essence_litre": 0.6829,
     "tva": 0.2,
     "conso_gazole_100km": 5.8,
     "conso_essence_100km": 6.8,
-    "accise_electricite_kwh": 0.0225,
+    "accise_electricite_kwh": 0.0306,
     "conso_electrique_100kwh": 17.0,
     "population": 68000000.0,
     "actifs_occupes": 28000000.0,
@@ -19,11 +19,11 @@
   "reserves": [
     {
       "parametre": "concours_publics_transports",
-      "texte": "Le total des concours publics aux transports est un AGRÉGAT RECONSTITUÉ : il additionne des sources qui n'ont ni le même périmètre ni le même millésime, et il ne comprend ni l'entretien routier des collectivités ni les dépenses fiscales. Il sert à donner un ordre de grandeur par habitant, et rien de plus."
+      "texte": "Le total des concours publics aux transports est un AGRÉGAT RECONSTITUÉ : il additionne des sources qui n'ont ni le même périmètre ni le même millésime, et il ne comprend ni l'entretien routier des collectivités ni les dépenses fiscales. Il sert à donner un ordre de grandeur par habitant, et rien de plus. Surtout : il COMPREND le versement mobilité et les subventions d'exploitation qui paient vos propres trajets. L'ajouter à ces deux montants compterait le même euro deux ou trois fois — ce que ce simulateur a fait jusqu'en septembre 2026, et ne fait plus. Il est désormais affiché comme repère, à côté du calcul, et jamais dedans."
     },
     {
       "parametre": "redevance_usage_km",
-      "texte": "La redevance kilométrique de remplacement est une HYPOTHÈSE DE TRAVAIL, calibrée pour rendre à peu près ce que la taxe sur les carburants rapporte aujourd'hui sur un véhicule moyen. Son niveau réel dépendrait du périmètre retenu, de la modulation par zone et par heure, et d'un débat qui n'a pas eu lieu."
+      "texte": "La redevance kilométrique de remplacement est une HYPOTHÈSE DE TRAVAIL, calibrée sur ce qu'un véhicule THERMIQUE MOYEN acquitte aujourd'hui au kilomètre. Elle a donc une conséquence qu'il faut dire plutôt que la laisser découvrir : appliquée telle quelle, elle multiplierait par plus de six ce qu'un véhicule électrique paie aujourd'hui, qui est presque rien. C'est la logique même d'un prix d'usage — la route s'use sous un véhicule électrique comme sous un autre —, mais c'est aussi une hausse brutale pour des acheteurs qui ont choisi leur véhicule sous un autre régime fiscal. Le programme propose pour cette raison une entrée progressive, et le simulateur affiche l'écart sans l'adoucir. Son niveau réel dépendrait du périmètre retenu, de la modulation par zone et par heure, et d'un débat qui n'a pas eu lieu."
     },
     {
       "parametre": "part_recettes_usagers_urbain",

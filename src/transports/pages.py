@@ -49,9 +49,10 @@ def programme() -> str:
             "Transilien, bus et tramways urbains — sont attribués par appel "
             "d'offres, avec un cahier des charges public. L'autorité continue "
             "de décider des lignes, des horaires et des tarifs : elle change "
-            "seulement de fournisseur quand un autre fait mieux. Six ans "
-            f"après la loi qui l'a permis, {v('ter_ouverts')} des services "
-            "TER seulement ont été mis en concurrence.",
+            "seulement de fournisseur quand un autre fait mieux. "
+            f"{v('ter_ouverts')} de l'offre conventionnée a été attribuée "
+            "ainsi — onze lots, quand une soixantaine doivent l'être avant la "
+            "fin 2033.",
         ),
         (
             "Votre argent",
@@ -71,18 +72,23 @@ def programme() -> str:
             "l'on roule à trois heures du matin en Lozère ou à huit heures "
             "dans un centre-ville saturé. Nous lui substituons, à prélèvement "
             "constant, une redevance d'usage modulable par zone et par heure, "
-            "dont le produit est affecté aux infrastructures. Ni impôt "
-            "supplémentaire, ni fichier de déplacements.",
+            "dont le produit est affecté aux infrastructures à hauteur de ce "
+            "qu'elles coûtent réellement. Ni impôt supplémentaire, ni fichier "
+            "de déplacements — et une entrée progressive pour les véhicules "
+            "électriques, qui ne paient presque rien aujourd'hui.",
         ),
         (
-            "Zéro vignette",
-            "et " + g.cle_texte("zéro interdiction") + " par type de moteur.",
+            "Les émissions",
+            "tarifées, " + g.cle_texte("pas la vignette") + " du véhicule.",
             "Les " + g.terme("ZFE") + " interdisent des véhicules selon leur "
-            "âge, sans regarder l'usage qu'on en fait. Nous les remplaçons "
-            "par la tarification des nuisances là où elles se produisent, et "
-            "nous abandonnons le calendrier d'interdiction des motorisations "
-            "au profit d'un objectif d'émissions, laissant aux constructeurs "
-            "et aux acheteurs le choix des moyens.",
+            "âge, sans regarder l'usage qu'on en fait. Nous leur substituons "
+            "la tarification des nuisances là où elles se produisent, et nous "
+            "remplaçons le calendrier d'interdiction des motorisations par un "
+            "objectif d'émissions. La substitution est la condition, et non "
+            f"une précaution de style : la France paie {v('astreinte_air')} "
+            "d'astreinte pour ses dépassements de pollution de l'air, et "
+            "supprimer l'instrument sans le remplacer nous ferait payer "
+            "davantage.",
         ),
     ])
 
@@ -137,9 +143,10 @@ def programme() -> str:
         ("L'opérateur cesse d'être irremplaçable",
          "Un contrat reconduit sans mise en concurrence n'a aucun prix de "
          "référence : ni l'autorité ni l'opérateur ne savent si le service "
-         "est cher. En Allemagne, les lots remis en appel d'offres ont vu "
-         f"leur coût reculer d'environ {v('baisse_couts_allemagne').lstrip('≈ ')} "
-         "à service comparable."),
+         "est cher. Les premiers lots français remis en appel d'offres ont "
+         f"vu leurs coûts de production reculer de {v('baisse_couts_ter')} — "
+         "chiffre relevé par un rapport sénatorial qui conclut, par ailleurs, "
+         "à un bilan financier incertain. Nous citons les deux."),
         ("La solidarité territoriale devient explicite",
          "Faire rouler un train peu fréquenté dans une vallée est un choix "
          "politique légitime. Il doit s'écrire comme tel — une "
@@ -179,9 +186,12 @@ pas.</p>
   perdre un contrat ; il ne peut pas supprimer un train que la collectivité a
   décidé d'acheter.</li>
   <li><strong>Pas de hausse du prélèvement total.</strong> La redevance
-  d'usage remplace la taxe sur les carburants à recettes constantes. Une
-  réforme qui augmenterait discrètement la facture des automobilistes serait
-  exactement ce que nous reprochons au système actuel.</li>
+  d'usage remplace la taxe sur les carburants à recettes constantes pour
+  l'État. Elle ne l'est pas pour chaque conducteur, et nous ne le cachons
+  pas : à prélèvement global inchangé, rouler peu coûtera moins et rouler
+  beaucoup coûtera plus. Le cas le plus net est celui du véhicule électrique,
+  qui n'acquitte presque rien aujourd'hui : notre simulateur affiche l'écart
+  sans l'adoucir, et la mesure 3 prévoit une entrée progressive.</li>
   <li><strong>Pas d'abandon de la desserte rurale.</strong> Elle est
   maintenue, mais payée explicitement, par une ligne budgétaire votée plutôt
   que par le déficit d'une entreprise publique.</li>
@@ -197,7 +207,7 @@ personne ne dit qu'ils ont sacrifié leurs chemins de fer.</p>""",
         "Les garanties, écrites dans la loi",
         """
 <p>Une réforme des transports ne vaut que par ce qu'elle interdit à ceux qui
-l'appliqueront. Cinq règles, dans la loi et non dans un décret :</p>
+l'appliqueront. Six règles, dans la loi et non dans un décret :</p>
 <ol class="gestes">
   <li><span class="rang">1</span><span><strong>Publication obligatoire.</strong>
   Coût complet, recettes, fréquentation et subvention par voyageur de chaque
@@ -209,15 +219,31 @@ l'appliqueront. Cinq règles, dans la loi et non dans un décret :</p>
   <li><span class="rang">3</span><span><strong>Contre-expertise avant
   décision.</strong> Tout projet dépassant un seuil fait l'objet d'une
   évaluation indépendante publiée avant le vote, et non après.</span></li>
-  <li><span class="rang">4</span><span><strong>Affectation de la redevance
-  d'usage.</strong> Son produit va à l'entretien et au développement des
-  infrastructures, et son taux est voté ; il ne peut pas rejoindre le budget
-  général, comme le fait aujourd'hui l'essentiel de la TICPE.</span></li>
+  <li><span class="rang">4</span><span><strong>Affectation bornée de la
+  redevance d'usage.</strong> Son produit est affecté à l'entretien et au
+  développement des infrastructures À HAUTEUR DE LEUR COÛT CONSTATÉ, établi
+  chaque année par un rapport public ; le solde demeure recette générale.
+  L'affectation totale ferait un trou dans le budget de l'État que nous ne
+  saurions pas combler, et nous préférons une garantie tenable à une promesse
+  large.</span></li>
   <li><span class="rang">5</span><span><strong>Protection des
   déplacements.</strong> La redevance d'usage se paie sans que soit constitué
   aucun fichier des trajets : comptage forfaitaire ou relevé de compteur, au
   choix de l'automobiliste.</span></li>
-</ol>""",
+  <li><span class="rang">6</span><span><strong>Clause de sauvegarde sur l'air
+  et sur l'arrêt.</strong> Si les valeurs limites de pollution ne sont pas
+  tenues dans les délais, la restriction d'accès revient de plein droit ; si
+  l'expérimentation de la redevance coûte plus qu'elle ne rapporte, elle
+  s'arrête. Une réforme qui ne prévoit pas son propre échec n'est pas une
+  réforme.</span></li>
+</ol>
+<p class="discret">Deux de ces règles sont plus fragiles que les autres, et il
+vaut mieux l'écrire que se le faire dire : une affectation de recette se défait
+par une loi de finances, et une interdiction de fichier par une loi ordinaire.
+C'est le sort qu'a connu la TICPE, dont l'affectation aux routes a disparu sans
+bruit. Nous proposons donc de les inscrire par une loi organique, qui ne se
+modifie pas dans le cours d'un budget — et nous serions favorables, pour
+l'interdiction du fichier, à une garantie de niveau constitutionnel.</p>""",
         "garanties",
     )
 
@@ -237,10 +263,17 @@ lent, et chaque étape est réversible tant que la suivante n'a pas eu lieu.</p>
   plus nombreux.</li>
   <li><strong>Année 3 — l'expérimentation de la redevance d'usage.</strong>
   Sur les poids lourds d'abord, comme la Suisse et l'Allemagne l'ont fait
-  avant nous, puis sur une région volontaire pour les véhicules légers.</li>
+  avant nous — et comme la France a échoué à le faire en 2013. La différence
+  tient en un mot : l'écotaxe était une taxe DE PLUS, la redevance est une
+  taxe À LA PLACE. Le texte qui la crée éteint la taxe au litre dans le même
+  article, faute de quoi il ne doit pas être déposé. Puis les véhicules légers
+  dans une région volontaire.</li>
   <li><strong>Années 4 et 5 — la bascule.</strong> La taxe au litre décroît à
   mesure que la redevance monte, à prélèvement constant et vérifié chaque
-  année par un rapport public.</li>
+  année par un rapport public. Les véhicules électriques y entrent par
+  paliers : ils n'acquittent presque rien aujourd'hui, et leur appliquer le
+  tarif plein d'un coup punirait un achat fait sous un autre régime
+  fiscal.</li>
   <li><strong>À tout moment — l'arrêt.</strong> Si l'expérimentation montre
   que le dispositif coûte plus qu'il ne rapporte, elle s'arrête. Une réforme
   qu'on ne peut pas arrêter n'est pas une réforme, c'est un pari.</li>
@@ -342,11 +375,15 @@ la masse salariale des employeurs et rapporte {v('versement_mobilite')} par an.
 La subvention d'équilibre vient du budget de la collectivité. Les billets
 apportent le reste — {v('recettes_usagers_urbain')} du coût d'un réseau urbain
 de province, {v('recettes_usagers_ter')} de celui d'un TER.</p>
-<p>Quant à la route, elle est financée à l'envers : {v('ticpe')} de taxe sur les
-carburants partent au budget général, tandis que l'entretien des voiries relève
-des départements et des communes, et que l'investissement national dépend d'une
-agence — l'AFIT France, {v('afit')} de budget annuel — alimentée par des
-fractions de taxes affectées.</p>""",
+<p>Quant à la route, elle est financée de côté. Les {v('ticpe')} de taxe sur
+les carburants ne partent pas tous au budget général — ce site l'a écrit
+pendant un an avant d'aller le vérifier, et c'était faux : l'État en garde
+environ la moitié, les collectivités en reçoivent une large part, et l'agence
+de financement des infrastructures — l'AFIT France, {v('afit')} de budget
+annuel — une fraction. Le défaut n'est donc pas que cet argent disparaisse,
+c'est qu'aucune de ces parts ne soit liée à une route : ce sont des budgets,
+pas des affectations. L'entretien des voiries, lui, relève des départements et
+des communes, sur leurs propres ressources.</p>""",
         identifiant="fonctionnement",
     )
 
@@ -377,14 +414,23 @@ l'estime, et le plus souvent en faveur de ce qui se voit.</p>""",
         f"""
 <p>Ce n'est pas une accusation contre les exploitants publics : un monopole
 n'est pas peuplé de paresseux, il est privé de l'information que produit la
-comparaison. Les pays qui ont mis leurs lots régionaux en appel d'offres ont
-découvert, en moyenne, qu'ils payaient trop cher — d'environ
-{v('baisse_couts_allemagne').lstrip('≈ ')} au train-kilomètre en Allemagne, à
-service comparable.</p>
-<p>La France a ouvert la possibilité en 2019. Six ans plus tard,
-{v('ter_ouverts')} des services ont été attribués après appel d'offres ; la
-plupart des régions ont prolongé leur convention jusqu'à la date limite, ce que
-la loi leur permettait.</p>
+comparaison. Il n'est plus nécessaire d'aller chercher la démonstration à
+l'étranger. Les premiers lots TER français remis en appel d'offres ont vu leurs
+coûts de production reculer de {v('baisse_couts_ter')} : l'étoile d'Amiens, les
+Pays de la Loire, la Nouvelle-Aquitaine, et une offre augmentée de trois quarts
+à deux fois en région Sud pour le même argent.</p>
+<p>Le rapport sénatorial qui établit ces chiffres conclut pourtant à un
+<strong>bilan incertain</strong> pour les finances publiques, et nous le citons
+aussi : chaque lot impose des dépenses nouvelles aux régions —
+{v('cout_transition_ter')} pour un atelier de maintenance neuf, des
+indemnisations de candidats, des recrutements. Les gains d'exploitation sont
+réels ; les coûts de transition le sont également, et ils tombent sur la
+collectivité avant les gains.</p>
+<p>Où en est-on ? {v('ter_ouverts')} de l'offre conventionnée a été attribuée
+après appel d'offres. Onze lots, quand une soixantaine doivent l'être d'ici la
+fin 2033 — et le calendrier se resserre au point que, sur certains, l'opérateur
+historique risque d'être le seul candidat. Un appel d'offres à un candidat ne
+produit aucun prix de référence.</p>
 {g.note(
     "La concurrence dont il est question ici est celle POUR le marché : "
     "l'autorité met un lot en appel d'offres et choisit l'exploitant. "
@@ -473,7 +519,17 @@ moyens.</p>
 {g.terme('TICPE')} prélève la même somme au litre en zone rurale et en heure de
 pointe urbaine, alors que les nuisances — congestion, bruit, qualité de l'air —
 diffèrent du tout au tout. Une taxe aveugle au lieu et à l'heure ne peut pas
-corriger un problème qui dépend du lieu et de l'heure.</p>""",
+corriger un problème qui dépend du lieu et de l'heure.</p>
+<p>Le débat de 2026 a montré l'impasse des deux camps. Le Parlement a voté la
+suppression des zones à faibles émissions ; le Conseil constitutionnel l'a
+censurée pour un motif de procédure — la mesure n'avait pas sa place dans le
+texte qui la portait — et les zones sont restées. Supprimer l'instrument sans
+lui substituer quoi que ce soit n'aurait de toute façon pas réglé le problème
+qui l'a fait naître : la France est sous astreinte,
+{v('astreinte_air')} au plus fort, pour des valeurs limites de pollution de
+l'air qu'elle devait respecter depuis 2010 et qu'elle dépasse toujours à Paris
+et à Lyon. Le choix n'est pas entre interdire et ne rien faire ; il est entre
+interdire et faire payer.</p>""",
         identifiant="interdiction",
     )
 
@@ -493,8 +549,33 @@ reliaient les usines au réseau.</p>
 <p>Le fret n'a aucun électorat : il ne fait pas d'inauguration et n'apparaît
 dans aucune promesse de campagne. C'est pourtant le segment où le report modal
 serait le plus utile, et celui où la concurrence est déjà ouverte depuis
-2006 — sans que cela suffise.</p>""",
+2006 — sans que cela suffise. La concurrence ne crée pas de sillons : elle
+répartit ceux qu'on veut bien lui laisser, et c'est l'objet de la mesure 7.</p>""",
         identifiant="fret",
+    )
+
+    defaut_autoroutes = g.cle(
+        "Et les autoroutes, dont la décision approche sans être prise",
+        "Les sept concessions historiques s'achèvent entre 2031 et 2036. Ce "
+        "qu'on fera du réseau à cette date est la décision de transport la "
+        "plus lourde de la décennie, et aucune majorité ne s'est prononcée.",
+        f"""
+<p>Les concessions rapportent aujourd'hui {v('peages_ca')} de péages par an à
+leurs titulaires. À leur terme, les ouvrages reviennent gratuitement à l'État,
+qui devra choisir : remettre le réseau en concession, l'exploiter en régie, ou
+basculer vers un péage d'usage généralisé. Chacune de ces voies engage des
+décennies et des dizaines de milliards.</p>
+<p>Le régulateur alerte sur un point que le débat ignore :
+{v('concessions_investissements')} d'investissements restent dus par les
+concessionnaires avant la fin des contrats, et les obligations de fin de
+contrat — l'état dans lequel le réseau doit être rendu — sont mal définies. Un
+concessionnaire dont le contrat s'achève n'a aucune raison d'entretenir
+au-delà du strict nécessaire, et c'est le moment où la vigilance devrait être
+maximale.</p>
+<p>Ce site a longtemps signalé cette échéance comme « la décision la plus
+lourde de la décennie » sans prendre parti. C'était une facilité : signaler
+n'est pas décider. La mesure 8 tranche.</p>""",
+        identifiant="autoroutes",
     )
 
     a_garder = g.depliant(
@@ -526,7 +607,8 @@ ferme tout seul, ligne par ligne, sans que personne n'ait à le décider.</p>"""
 
     corps_sections = "\n".join([repartition, defaut_prix, defaut_monopole,
                                 defaut_dette, defaut_projets, defaut_entretien,
-                                defaut_interdiction, defaut_fret, a_garder])
+                                defaut_interdiction, defaut_fret,
+                                defaut_autoroutes, a_garder])
 
     return f"""
 {tete}
@@ -543,9 +625,11 @@ ferme tout seul, ligne par ligne, sans que personne n'ait à le décider.</p>"""
 {corps_sections}
 
 {g.appel(
-    "Six défauts, six mesures.",
+    "Six défauts, deux sujets oubliés, huit mesures.",
     "Chacun de ces défauts appelle une mesure précise, avec son mécanisme, "
-    "son effet attendu et l'objection la plus sérieuse qu'on lui oppose.",
+    "son effet attendu et l'objection la plus sérieuse qu'on lui oppose. Le "
+    "fret et les autoroutes en ont une aussi : diagnostiquer sans proposer "
+    "est exactement ce que nous reprochons aux autres.",
     [("La réforme, mesure par mesure", "reforme.html", True),
      ("Ce que font les autres pays", "comparaisons.html", False)],
 )}
@@ -558,17 +642,21 @@ ferme tout seul, ligne par ligne, sans que personne n'ait à le décider.</p>"""
 def comparaisons() -> str:
     tete = g.affiche(
         "Ailleurs",
-        "Cinq pays, dont " + g.cle_texte("un qui a échoué") + ".",
+        "Six pays, dont " + g.cle_texte("le nôtre, qui a échoué") + ".",
         "La Suisse finance son réseau par des recettes affectées et votées ; "
         "l'Allemagne achète ses trains régionaux par appel d'offres ; "
         "l'Italie laisse deux opérateurs se concurrencer sur la grande "
         "vitesse ; le Japon a privatisé ses chemins de fer. Le Royaume-Uni a "
-        "essayé autre chose, et fait machine arrière — c'est la ligne la plus "
-        "utile du tableau.",
+        "essayé autre chose et fait machine arrière. La France, elle, a tenté "
+        "notre troisième mesure en 2013 et l'a abandonnée pour un milliard "
+        "d'euros — c'est la ligne la plus utile du tableau.",
     )
 
     entetes = ["Pays", "Investissement dans le réseau",
                "Ce que paie l'usager", "Le mécanisme"]
+    # La France y figure au titre de l'échec, et sa ligne ne se lit pas comme
+    # les autres : les deux colonnes chiffrées n'ont pas de sens pour un
+    # dispositif qui n'a jamais fonctionné, et elles le disent.
     lignes = [[f'<span id="pays-{pays.nom.lower().replace(" ", "-")}">'
                f"{pays.drapeau} {pays.nom}</span>",
                pays.investissement, pays.usager, pays.modele]
@@ -664,11 +752,11 @@ conçue — à une proposition qui, pour les trains régionaux, décrit l'Allema
 {corps_sections}
 
 {g.appel(
-    "Ce que nous en retenons, écrit en six mesures.",
-    "Les appels d'offres allemands, le financement affecté suisse et "
-    "l'ouverture italienne se retrouvent dans trois des six mesures de notre "
-    "réforme. L'échec britannique, lui, se retrouve dans ce que nous ne "
-    "proposons pas.",
+    "Ce que nous en retenons, écrit en huit mesures.",
+    "Le financement affecté suisse, les appels d'offres allemands et "
+    "l'ouverture italienne se retrouvent dans trois de nos huit mesures. Les "
+    "deux échecs — le britannique et le nôtre — se retrouvent dans ce que "
+    "nous ne proposons pas, et dans la façon dont nous proposons le reste.",
     [("La réforme, mesure par mesure", "reforme.html", True),
      ("Ce que nous ne proposons pas", "index.html#non-propose", False)],
 )}
@@ -681,7 +769,7 @@ conçue — à une proposition qui, pour les trains régionaux, décrit l'Allema
 def reforme() -> str:
     tete = g.affiche(
         "La réforme",
-        "Six mesures, " + g.cle_texte("et ce qu'on peut leur opposer") + ".",
+        "Huit mesures, " + g.cle_texte("et ce qu'on peut leur opposer") + ".",
         "Chacune est décrite par son mécanisme — ce qu'elle change dans les "
         "textes —, par son effet attendu, et par l'objection la plus sérieuse "
         "qu'on lui oppose. Quand nous ne savons pas chiffrer, nous l'écrivons "
@@ -700,17 +788,27 @@ explique publiquement pourquoi elle ne le fait pas. Le cahier des charges — le
 lignes, les horaires, les tarifs, la qualité attendue — reste écrit par
 l'autorité élue.</p>
 <p><strong>L'effet attendu.</strong> Un prix de référence, là où il n'en existe
-aucun. Les lots allemands remis en concurrence ont vu leur coût au
-{g.terme('train-kilomètre')} reculer d'environ
-{v('baisse_couts_allemagne').lstrip('≈ ')} à service comparable — et
-l'opérateur historique en a remporté une bonne part, ce qui est le signe que le
-mécanisme fonctionne.</p>
-<p><strong>L'objection la plus sérieuse.</strong> Un appel d'offres mal conçu
-coûte plus cher qu'un monopole : lots trop petits, transferts de personnel mal
-réglés, matériel roulant dont l'attribution n'est pas prévue, candidats trop
-peu nombreux. C'est arrivé, et c'est pourquoi nous proposons de commencer par
-les réseaux denses — là où les candidats sont nombreux et l'échec
-rattrapable.</p>""",
+aucun. Il n'est plus besoin de l'emprunter à l'Allemagne : les premiers lots
+français remis en concurrence ont vu leurs coûts de production au
+{g.terme('train-kilomètre')} reculer de {v('baisse_couts_ter')}, et l'offre
+augmenter de trois quarts à deux fois à coût constant en région Sud.
+L'opérateur historique a remporté une large part de ces lots, ce qui est le
+signe que le mécanisme fonctionne — pas qu'il échoue.</p>
+<p><strong>L'objection la plus sérieuse.</strong> Elle est désormais chiffrée,
+et par le Sénat. Chaque lot impose à la région des dépenses nouvelles :
+{v('cout_transition_ter')} pour un atelier de maintenance neuf — environ
+200 M€ anticipés en région Sud, 193 M€ en Nouvelle-Aquitaine —,
+l'indemnisation des candidats malheureux, et un quart d'effectifs en plus dans
+les services TER. Le même rapport relève que le calendrier est intenable :
+une soixantaine de lots à attribuer d'ici 2033, au point que sur certains
+l'opérateur historique serait le seul candidat. Un appel d'offres sans
+candidat ne produit aucun prix de référence, et coûte tout de même ses frais
+de procédure.</p>
+<p><strong>Ce que nous en tirons.</strong> Commencer par les réseaux denses,
+où les candidats sont nombreux ; étaler le calendrier plutôt que de tenir une
+échéance au prix de lots déserts ; et mutualiser entre régions ce qui peut
+l'être — ateliers, matériel, ingénierie d'appel d'offres. Une région seule
+paie un atelier ; trois régions voisines en paient un tiers chacune.</p>""",
         identifiant="concurrence",
     )
 
@@ -741,14 +839,41 @@ son coût est une ligne mal défendue.</p>""",
         "3. Payer l'usage de la route, pas sa possession",
         "À prélèvement constant, une redevance kilométrique modulable par "
         "zone et par heure remplace progressivement la taxe sur les "
-        "carburants, et son produit est affecté aux infrastructures.",
+        "carburants. Son produit est affecté aux infrastructures à hauteur de "
+        "ce qu'elles coûtent, et le solde demeure recette générale.",
         f"""
 <p><strong>Le mécanisme.</strong> La {g.terme('TICPE')} décroît à mesure que
-la redevance monte. Le taux de cette dernière est voté, son produit affecté à
-l'entretien et au développement du réseau — contrairement à la TICPE, dont
-l'essentiel rejoint le budget général. Les poids lourds d'abord, comme en
-Suisse et en Allemagne, puis les véhicules légers dans une région
-volontaire.</p>
+la redevance monte, dans le même texte et au même rythme. Le taux de la
+redevance est voté chaque année, et son produit affecté à l'entretien et au
+développement du réseau <strong>à hauteur du coût constaté de celui-ci</strong>,
+établi par un rapport public ; le solde demeure recette générale. Les poids
+lourds d'abord, puis les véhicules légers dans une région volontaire.</p>
+<p><strong>Pourquoi une affectation bornée, et non totale.</strong> Parce que
+l'affectation totale est une promesse que nous ne saurions pas tenir. Les
+{v('ticpe')} de taxe sur les carburants ne financent pas les routes, mais ils
+financent quelque chose : l'État en garde environ la moitié, et les
+collectivités une large part. Affecter l'intégralité du produit aux
+infrastructures ouvrirait dans le budget général un trou de plusieurs
+milliards dont ce volet ne dit pas comment il serait comblé — et un volet
+transports qui déséquilibre le budget de l'État n'est pas un programme
+sérieux. Nous affectons donc ce que les infrastructures coûtent, ce qui est
+déjà une rupture : aujourd'hui, ce montant n'est même pas calculé.</p>
+<p><strong>Le précédent français, qui est un échec.</strong> La France a déjà
+tenté cette mesure. L'écotaxe poids lourds a été votée, construite, puis
+abandonnée en 2013 devant la fronde des « bonnets rouges » : le contribuable a
+versé {v('ecotaxe_cout')} pour une taxe qui n'a jamais rien perçu. Nous en
+retenons une règle, et elle est contraignante : l'écotaxe était une taxe DE
+PLUS, la redevance est une taxe À LA PLACE. Si le texte qui crée la redevance
+n'éteint pas la taxe au litre dans le même article, il ne doit pas être
+déposé.</p>
+<p><strong>Les véhicules électriques, qui sont le cas le plus dur.</strong> Un
+véhicule électrique acquitte aujourd'hui l'accise sur l'électricité,
+{v('accise_electricite')} : rapporté au kilomètre, plus de six fois moins
+qu'un véhicule thermique, pour une chaussée qui s'use pareillement. Une
+redevance d'usage corrige exactement cela, et c'est pourquoi elle leur coûte
+beaucoup plus. Nous l'écrivons ici, notre simulateur l'affiche, et nous
+prévoyons une entrée par paliers sur la durée d'un mandat : on ne change pas
+rétroactivement le calcul d'un achat déjà fait.</p>
 <p><strong>L'effet attendu.</strong> Un prix qui dit enfin quelque chose :
 rouler en heure creuse sur une route vide coûte moins que rouler en heure de
 pointe dans une agglomération saturée. C'est la seule manière connue de
@@ -775,6 +900,18 @@ Ce qui la remplace est un prix : plus élevé pour un véhicule qui émet beauco
 dans une zone et à une heure où cela compte, nul là où cela ne compte pas. La
 même logique s'applique aux constructeurs : un objectif d'émissions, et non
 l'interdiction d'une technologie nommée.</p>
+<p><strong>L'ordre des opérations, qui est tout.</strong> En 2026, le Parlement
+a voté la suppression des zones à faibles émissions et le Conseil
+constitutionnel l'a censurée pour un motif de forme — la mesure n'avait pas sa
+place dans le texte qui la portait. Nous ne proposons pas de recommencer de la
+même façon. Une suppression sèche laisserait entier le problème qui a fait
+naître ces zones : la France est sous astreinte, {v('astreinte_air')} au plus
+fort, pour des valeurs limites de pollution de l'air qu'elle devait respecter
+depuis 2010 et qu'elle dépasse toujours. La restriction ne tombe donc que
+lorsque la tarification la remplace, zone par zone — et elle revient de plein
+droit si les valeurs limites ne sont pas tenues. La contrainte européenne
+porte sur un résultat, pas sur un instrument : c'est ce qui rend la
+substitution possible, et c'est aussi ce qui l'oblige à marcher.</p>
 <p><strong>L'effet attendu.</strong> Le même résultat environnemental, obtenu
 sans exclure de la ville ceux qui changent de voiture le plus rarement. Une
 {g.terme('ZFE')} regarde l'âge du véhicule ; une tarification regarde ce qu'il
@@ -839,6 +976,69 @@ que personne n'analyse.</p>""",
         identifiant="offre",
     )
 
+    mesure_7 = g.cle(
+        "7. Rendre au fret des sillons, et un prix de sillon",
+        "Un volume de sillons de marchandises garanti par axe et opposable, "
+        "des péages ferroviaires ramenés au coût qu'un train de fret impose "
+        "réellement, et des itinéraires de report pendant les travaux.",
+        f"""
+<p><strong>Le mécanisme.</strong> Trois textes, et aucun n'est spectaculaire.
+Le contrat qui lie l'État au gestionnaire d'infrastructure inscrit un volume de
+{g.terme('sillons', 'sillon')} de fret par grand axe, opposable et
+assorti d'une compensation lorsqu'il n'est pas tenu. Les
+{g.terme('péages ferroviaires', 'péage ferroviaire')} appliqués au fret sont
+ramenés au coût que ce trafic impose au réseau, ce que le droit européen permet
+et que nos voisins pratiquent. Enfin, tout chantier de régénération publie son
+itinéraire de report avant de commencer.</p>
+<p><strong>L'effet attendu.</strong> La part modale du rail dans les
+marchandises est tombée à {v('fret_ferroviaire')}, contre {v('fret_ue')} en
+moyenne européenne. Le fret ferroviaire est ouvert à la concurrence depuis
+2006, et cela n'a pas suffi : la concurrence ne crée pas de sillons, elle se
+partage ceux qu'on lui laisse. Un chargeur n'arbitre pas sur un prix seul, il
+arbitre sur une promesse d'horaire tenue — c'est cela qu'il faut lui rendre.</p>
+<p><strong>L'objection la plus sérieuse.</strong> Un sillon donné au fret est
+un sillon retiré aux voyageurs, et un péage ramené au coût marginal est une
+recette en moins pour le gestionnaire d'infrastructure — donc une subvention en
+plus, ou une dette de plus. Les deux sont vrais. Nous assumons l'arbitrage sur
+les axes où le fret a une chance, et nous refusons de le prétendre gratuit :
+cette mesure coûte, et son coût doit figurer dans la loi de finances qui la
+porte.</p>""",
+        identifiant="fret-mesure",
+    )
+
+    mesure_8 = g.cle(
+        "8. Décider maintenant ce que deviennent les autoroutes en 2031",
+        "Aucune prolongation de concession ; des obligations de fin de contrat "
+        "écrites tout de suite ; puis des contrats courts, de périmètre "
+        "réduit, à péage plafonné et régulé — ou la redevance d'usage.",
+        f"""
+<p><strong>Le mécanisme.</strong> Une loi, votée avant l'échéance et non dans
+l'urgence qui la suivra. Elle interdit toute prolongation des concessions
+historiques, qui s'achèvent entre 2031 et 2036. Elle définit dès maintenant
+l'état dans lequel le réseau doit être rendu, avec inventaire contradictoire et
+garantie financière : {v('concessions_investissements')} d'investissements
+restent dus par les concessionnaires avant la fin des contrats, et un
+concessionnaire sortant n'a aucune raison d'entretenir au-delà du strict
+nécessaire. Elle arrête enfin la suite : des contrats plus courts et de
+périmètre plus réduit, remis en concurrence avec un péage plafonné et contrôlé
+par l'{g.terme('ART')}, ou l'intégration du réseau concédé dans la redevance
+d'usage de la mesure 3.</p>
+<p><strong>L'effet attendu.</strong> Ne pas refaire 2006. Les concessions
+rapportent {v('peages_ca')} de péages par an, et l'État s'apprête à récupérer
+gratuitement un réseau qu'il avait vendu. La décision se prendra une fois ; si
+elle se prend dans l'urgence, elle se prendra mal, et pour trente ans.</p>
+<p><strong>L'objection la plus sérieuse.</strong> Une régie publique
+rapporterait davantage à l'État qu'une nouvelle mise en concession, et nous ne
+pouvons pas démontrer le contraire : la réponse dépend du coût de la dette
+publique, de la capacité de l'État à conduire des travaux, et d'hypothèses de
+trafic sur trente ans. Notre préférence pour la concurrence ne vaut pas
+démonstration. Ce que nous tenons pour acquis est plus étroit : quelle que soit
+la voie retenue, elle doit être choisie après une contre-expertise publiée —
+c'est la mesure 5 — et jamais par une prolongation négociée en fin de
+contrat.</p>""",
+        identifiant="autoroutes-mesure",
+    )
+
     financement = g.cle(
         "Ce que nous ne pouvons pas chiffrer, et pourquoi",
         "Nous n'annonçons aucune économie globale. Un tel chiffrage exigerait "
@@ -846,30 +1046,38 @@ que personne n'analyse.</p>""",
         f"""
 <p>Il serait facile d'écrire qu'ouvrir les contrats régionaux à la concurrence
 ferait économiser plusieurs milliards par an : il suffirait d'appliquer la
-baisse allemande de {v('baisse_couts_allemagne').lstrip('≈ ')} au total des
+baisse de {v('baisse_couts_ter')} constatée sur les premiers lots au total des
 concours publics au ferroviaire. Ce calcul serait faux, pour trois raisons
 au moins.</p>
 <ul class="serree">
-  <li>La baisse allemande porte sur le coût des lots effectivement remis en
+  <li>Cette baisse porte sur le coût des lots effectivement remis en
   concurrence, à service constant — pas sur l'ensemble des concours publics,
   qui comprennent l'infrastructure, la dette et les retraites.</li>
   <li>Une autorité qui paie moins cher le train-kilomètre en achète
-  généralement davantage : l'économie se transforme en offre, ce qui est un bon
-  résultat, mais pas une économie budgétaire.</li>
-  <li>La transition a un coût propre : reprise des personnels, transfert du
-  matériel roulant, systèmes d'information, préparation des appels d'offres.
-  Il est réel et mal documenté.</li>
+  généralement davantage : c'est ce qui s'est passé, l'offre ayant augmenté de
+  trois quarts à deux fois sur certains lots à coût constant. L'économie s'est
+  transformée en trains, ce qui est un bon résultat — mais pas une économie
+  budgétaire.</li>
+  <li>La transition a un coût propre, et il n'est plus vrai de le dire mal
+  documenté : {v('cout_transition_ter')} par atelier de maintenance neuf,
+  l'indemnisation des candidats, un quart d'effectifs supplémentaires dans les
+  services TER des régions. Ce coût tombe avant les gains, et il tombe sur la
+  région, pas sur l'État.</li>
 </ul>
-<p>Ce que nous pouvons affirmer est plus modeste, et vérifiable : le système
-actuel ne connaît pas ses propres coûts, et aucune des économies qu'on lui
-prête — dans un sens ou dans l'autre — ne repose aujourd'hui sur une donnée
-publique. La première mesure de ce programme est celle qui rend les cinq
-autres discutables.</p>""",
+<p>Ce que nous pouvons affirmer est plus modeste, et vérifiable : sur les lots
+qui ont été remis en concurrence, la collectivité paie moins cher le même
+service, et paie en même temps une facture de transition que personne n'avait
+anticipée. Les deux sont établis, et par la même source. Pour le reste — ce que
+cela donnerait à l'échelle du pays —, le système actuel ne connaît toujours pas
+ses propres coûts, et aucune des économies qu'on lui prête, dans un sens ou
+dans l'autre, ne repose sur une donnée publique ligne par ligne. La deuxième
+mesure de ce programme est celle qui rend les sept autres discutables.</p>""",
         identifiant="financement",
     )
 
     corps_sections = "\n".join([mesure_1, mesure_2, mesure_3, mesure_4,
-                                mesure_5, mesure_6, financement])
+                                mesure_5, mesure_6, mesure_7, mesure_8,
+                                financement])
 
     return f"""
 {tete}
@@ -905,15 +1113,17 @@ def simulateur() -> str:
         "Ce que vous payez",
         "Vos déplacements vous coûtent " + g.cle_texte("bien plus") + " que "
         "votre carburant et votre abonnement.",
-        "Taxes sur le carburant, péages, abonnement, subvention de vos "
-        "propres trajets, part des concours publics, versement mobilité "
-        "répercuté : six flux, dont quatre n'apparaissent nulle part en "
-        "clair. Ce simulateur les additionne. Tout se calcule dans votre "
-        "navigateur : " + g.cle_texte("rien n'est envoyé nulle part") + ".",
+        "D'un côté ce que vous versez — taxes sur l'énergie, péages, "
+        "abonnement. De l'autre ce que la collectivité verse pour les trajets "
+        "que vous faites, et dont aucun document ne vous informe. Ce "
+        "simulateur met les deux côte à côte, et refuse de les mélanger avec "
+        "les agrégats nationaux, qui les comprennent déjà. Tout se calcule "
+        "dans votre navigateur : "
+        + g.cle_texte("rien n'est envoyé nulle part") + ".",
     )
 
     formulaire = """
-<form class="creme simulateur-court" id="formulaire" method="get" action="#resultat">
+<form class="creme simulateur-court" id="formulaire">
   <div class="tete">
     <h2 class="serif">Et vous, ça fait combien&nbsp;?</h2>
     <span class="etiquette">Le simulateur</span>
@@ -964,11 +1174,12 @@ def simulateur() -> str:
         <option value="autre">Sans emploi, étudiant ou retraité</option>
       </select>
     </div>
-    <div class="action"><button type="submit">Calculer →</button></div>
+    <div class="action"><button type="button" id="calculer">Calculer →</button></div>
   </div>
   <p class="discret" style="margin:0.9rem 0 0">Deux totaux : ce que vos
-  déplacements vous coûtent visiblement, et ce qu'ils vous coûtent sans que
-  vous le voyiez. Le second est presque toujours le plus grand.</p>
+  déplacements vous coûtent visiblement, et ce que la collectivité verse pour
+  les trajets que vous faites. Ce formulaire n'a ni adresse d'envoi ni méthode
+  d'envoi : il ne peut rien transmettre, même si le calcul échoue.</p>
 </form>"""
 
     resultat = """
@@ -976,7 +1187,9 @@ def simulateur() -> str:
   <noscript>
     <div class="erreur">Ce simulateur a besoin de JavaScript : le calcul se
     fait dans votre navigateur, il n'y a pas de serveur pour le faire à sa
-    place. Les hypothèses et la formule sont lisibles sur la page
+    place — et le bouton « Calculer » ne fait donc rien ici, plutôt que
+    d'envoyer vos réponses quelque part. Les hypothèses et la formule sont
+    lisibles sur la page
     <a href="donnees.html#simulateur">Données et sources</a>.</div>
   </noscript>
 </div>"""
@@ -1000,24 +1213,39 @@ formule, dans l'ordre où elle s'applique.</p>
 </ul>
 <h4>Ce que vous ne voyez pas</h4>
 <ul class="serree">
-  <li><strong>La subvention de vos propres trajets</strong> : votre
-  abonnement couvre {v('recettes_usagers_urbain')} du coût d'un réseau urbain,
-  {v('recettes_usagers_ter')} de celui d'un TER. Le simulateur en déduit ce
-  que la collectivité verse pour VOS trajets.</li>
-  <li><strong>Votre part des concours publics</strong> :
-  {v('depense_publique_transports')} de concours aux transports, rapportés à
-  un habitant. C'est un agrégat reconstitué, et la page Données le dit.</li>
-  <li><strong>Le {g.terme('versement mobilité')} répercuté</strong> :
-  {v('versement_mobilite')} payés par les employeurs, rapportés à un actif
-  occupé. Un prélèvement sur la masse salariale est une part de ce que votre
-  travail rapporte, même s'il ne figure pas sur votre fiche de paie.</li>
+  <li><strong>La subvention de vos propres trajets</strong>, et elle seule :
+  votre abonnement couvre {v('recettes_usagers_urbain')} du coût d'un réseau
+  urbain, {v('recettes_usagers_ter')} de celui d'un TER. Le simulateur en
+  déduit ce que la collectivité verse pour VOS trajets, par le versement
+  mobilité et par son propre budget.</li>
 </ul>
+<h4>Ce que ce calcul n'additionne plus, et pourquoi</h4>
+<p>Jusqu'en septembre 2026, cette page ajoutait à la ligne ci-dessus deux
+autres montants : votre part des {v('depense_publique_transports')} de concours
+publics aux transports, et les {v('versement_mobilite')} de
+{g.terme('versement mobilité')} rapportés à un actif. <strong>C'était une
+erreur de calcul</strong>, et elle gonflait le seul chiffre que cette page
+existe pour établir : l'agrégat des concours publics COMPREND le versement
+mobilité et les subventions d'exploitation qui paient vos trajets. Les
+additionner comptait le même euro deux ou trois fois.</p>
+<p>Ces deux ordres de grandeur restent affichés, mais à côté du calcul et
+jamais dedans. Nous les laissons parce qu'ils situent l'enjeu, et nous les
+sortons du total parce qu'ils n'y ont pas leur place. Le corriger fait baisser
+le chiffre qui servait notre démonstration : c'est précisément pourquoi il
+fallait le corriger.</p>
 <h4>Ce que la réforme changerait</h4>
 <ul class="serree">
   <li><strong>La redevance d'usage remplace la taxe au litre</strong>, à
-  prélèvement constant : le simulateur la calcule au kilomètre, pour montrer
-  l'ordre de grandeur de la substitution. Son niveau est une
-  <strong>hypothèse de travail</strong>, pas une mesure.</li>
+  prélèvement constant pour l'État — pas pour chaque conducteur : le
+  simulateur la calcule au kilomètre, pour montrer l'ordre de grandeur de la
+  substitution. Son niveau est une <strong>hypothèse de travail</strong>,
+  calibrée sur un véhicule thermique moyen, pas une mesure.</li>
+  <li><strong>Si vous roulez en électrique, l'écart affiché est
+  considérable</strong>, et nous ne l'avons pas adouci. Un véhicule électrique
+  acquitte {v('accise_electricite')} d'accise sur ce qu'il consomme, soit
+  plus de six fois moins au kilomètre qu'un véhicule thermique, pour une
+  chaussée qui s'use pareillement. C'est l'anomalie que la redevance corrige,
+  et c'est aussi pourquoi la mesure 3 prévoit une entrée par paliers.</li>
   <li><strong>Le reste ne bouge pas</strong> : la subvention de vos trajets
   et les concours publics restent ce qu'ils sont. Ils deviennent visibles,
   c'est tout — et c'est le sujet de ce site.</li>
@@ -1047,7 +1275,7 @@ formule, dans l'ordre où elle s'applique.</p>
     "Un prélèvement qu'on ne voit pas n'est jamais discuté. Rendre visible ce "
     "que les transports coûtent et à qui est la première mesure de ce "
     "programme, et la seule qui ne coûte rien.",
-    [("La réforme en six mesures", "reforme.html", True),
+    [("La réforme en huit mesures", "reforme.html", True),
      ("Pourquoi ça coûte autant", "diagnostic.html", False)],
 )}
 """
@@ -1059,13 +1287,160 @@ formule, dans l'ordre où elle s'applique.</p>
 def objections() -> str:
     tete = g.affiche(
         "Objections",
-        "Dix critiques, " + g.cle_texte("dont deux auxquelles nous répondons "
-                                        "mal") + ".",
+        "Seize critiques, " + g.cle_texte("dont trois auxquelles nous "
+                                          "répondons mal") + ".",
         "Un programme qui ne publierait que les objections qu'il sait "
-        "démolir ne mériterait pas d'être lu. Les dix qui suivent sont les "
-        "plus sérieuses que nous connaissions ; les deux dernières sont "
+        "démolir ne mériterait pas d'être lu. Les seize qui suivent sont les "
+        "plus sérieuses que nous connaissions ; les trois dernières sont "
         "celles où notre réponse est incomplète, et nous le disons plutôt "
         "que d'en fabriquer une.",
+    )
+
+    o_ecotaxe = g.cle(
+        "« L'écotaxe a déjà échoué, vous allez recommencer »",
+        "L'objection est fondée, et c'est notre propre pays qui en fait la "
+        "preuve. La différence tient en un mot : l'écotaxe était une taxe de "
+        "plus, la redevance est une taxe à la place.",
+        f"""
+<p>Rappelons l'échec plutôt que de l'attendre : votée sans opposition,
+construite, dotée de cent soixante-quatorze portiques, l'écotaxe poids lourds a
+été suspendue en octobre 2013 devant la fronde des « bonnets rouges », et le
+contrat résilié un an plus tard. Le contribuable a versé {v('ecotaxe_cout')}
+pour une taxe qui n'a jamais rien perçu. La Cour des comptes y a vu un échec de
+politique publique, et elle avait raison.</p>
+<p>Trois choses l'ont tuée, et nous en tirons trois règles. Elle s'ajoutait aux
+prélèvements existants sans qu'aucun ne baisse : notre texte éteint la taxe au
+litre dans le même article, ou il n'est pas déposé. Elle frappait d'abord une
+profession organisée, sans contrepartie visible pour elle : la redevance
+remplace ce que les transporteurs acquittent déjà sur leur gazole. Elle était
+collectée par un dispositif privé complexe dont le coût a nourri le soupçon :
+nous proposons le relevé de compteur au contrôle technique, qui n'exige aucun
+portique.</p>
+<p>Ce que nous ne prétendons pas : que ces trois différences suffisent. Une
+réforme de la fiscalité des carburants peut échouer pour des raisons qui n'ont
+rien à voir avec son dessin, et la France en a fait deux fois l'expérience,
+avec l'écotaxe puis avec les « gilets jaunes ». C'est pourquoi la bascule est
+progressive, expérimentale et réversible — pas parce que nous doutons de la
+mesure, mais parce que nous avons lu ce qui est arrivé aux précédentes.</p>""",
+        identifiant="ecotaxe",
+    )
+
+    o_recentralisation = g.cle(
+        "« Obliger les régions à mettre en concurrence, c'est recentraliser »",
+        "L'objection vise juste, et elle vient de notre propre camp. Nous y "
+        "répondons par la soupape : l'obligation n'est pas d'attribuer à un "
+        "concurrent, elle est de s'expliquer publiquement quand on ne met pas "
+        "en concurrence.",
+        """
+<p>Un programme libéral qui impose une procédure aux collectivités doit
+s'expliquer. La libre administration des collectivités territoriales est un
+principe constitutionnel, et une loi nationale qui dicterait aux régions le
+mode d'attribution de leurs contrats heurterait à la fois ce principe et notre
+propre préférence pour les décisions prises au plus près.</p>
+<p>D'où la forme retenue, qui n'est pas une obligation d'attribuer mais une
+obligation de motiver. La région garde le droit de reconduire son opérateur
+sans appel d'offres ; elle doit dire pourquoi, publiquement, devant ses
+électeurs. C'est l'inversion de la charge de la preuve, pas la confiscation du
+choix. Un exécutif régional qui assume devant les siens de payer plus cher
+pour ne pas changer d'opérateur est dans son droit ; un exécutif qui le fait
+sans avoir à le dire ne l'est pas moins, mais personne ne peut le lui
+reprocher, et c'est cela que nous changeons.</p>
+<p>Ajoutons que l'échéance ne vient pas de nous : le droit européen impose la
+mise en concurrence des services conventionnés d'ici la fin 2033. La question
+n'est pas de savoir si les régions s'y mettront, mais si elles s'y mettent en
+ordre ou dans l'urgence — et le rapport sénatorial de 2026 penche pour
+l'urgence.</p>""",
+        identifiant="recentralisation",
+    )
+
+    o_electriques = g.cle(
+        "« Votre redevance va faire payer six fois plus les voitures "
+        "électriques »",
+        "C'est exact, et notre simulateur l'affiche. Un véhicule électrique "
+        "use la route comme un autre et ne paie presque rien pour elle : "
+        "c'est l'anomalie, pas la correction.",
+        f"""
+<p>Un véhicule électrique acquitte l'accise sur l'électricité,
+{v('accise_electricite')} — rapporté au kilomètre, plus de six fois moins
+qu'un véhicule thermique sur son carburant. Cet écart n'a jamais été décidé :
+il résulte du fait qu'une taxe au litre ne sait taxer qu'un litre. Il grandit
+mécaniquement à mesure que le parc s'électrifie, et il emporte avec lui le
+financement de la route.</p>
+<p>Nous ne le corrigeons pas d'un coup pour autant. Des centaines de milliers
+de personnes ont acheté un véhicule électrique sous un régime fiscal donné,
+souvent à notre invitation collective ; leur appliquer le tarif plein dès la
+première année serait leur changer les règles après coup. La redevance leur
+est donc appliquée par paliers, sur la durée d'un mandat.</p>
+<p>Ce que nous n'accepterons pas, c'est de laisser croire que la question ne se
+pose pas. Elle se posera à quiconque gouvernera, libéral ou non, le jour où la
+taxe sur les carburants aura cessé de rapporter.</p>""",
+        identifiant="electriques",
+    )
+
+    o_gratuite = g.cle(
+        "« Pourquoi pas la gratuité des transports ? »",
+        "Parce qu'un prix nul est un prix, et le moins informatif de tous. La "
+        "gratuité ne supprime pas le coût : elle le déplace vers l'employeur "
+        "et le contribuable, et elle efface le dernier signal qui restait.",
+        f"""
+<p>Un réseau gratuit reste payé : par le {g.terme('versement mobilité')}, donc
+par les employeurs, et par le budget de la collectivité, donc par l'impôt
+local. Le taux de couverture par l'usager tombe à zéro, et avec lui toute
+possibilité de savoir si l'offre correspond à la demande. Or le taux moyen a
+déjà reculé — il est de {v('recettes_usagers_urbain')} sur les réseaux urbains
+de province — à mesure que l'offre et la gratuité progressaient plus vite que
+la fréquentation.</p>
+<p>Notre désaccord n'est pas moral. Il est que la gratuité résout un problème
+d'accès — certains ne peuvent pas payer — par un instrument qui s'applique à
+tous, y compris à ceux qui peuvent. La tarification sociale résout le même
+problème en visant ceux qui en ont besoin, et laisse le prix dire quelque
+chose aux autres. C'est pourquoi nous proposons de rendre les réductions
+existantes explicites et financées, et non de les étendre à tout le monde.</p>
+<p>Une nuance, tout de même, que l'honnêteté impose : sur un petit réseau où la
+recette commerciale couvre à peine le coût de la percevoir, la gratuité peut
+être le choix rationnel. Ce n'est pas une position de principe contre, c'est
+une position contre la gratuité comme principe.</p>""",
+        identifiant="gratuite",
+    )
+
+    o_perimetre = g.cle(
+        "« Votre programme ignore l'avion, le vélo et l'accessibilité »",
+        "En partie vrai. Ce volet porte sur le ferroviaire, la route et les "
+        "transports collectifs ; voici ce que nous pensons du reste, plutôt "
+        "que de laisser le silence répondre.",
+        """
+<ul class="serree">
+  <li><strong>L'aérien.</strong> Le carburant des vols commerciaux est exonéré
+  d'accise, quand celui des automobilistes est l'un des plus taxés d'Europe.
+  C'est une distorsion, et un libéral n'a aucune raison de la défendre : nous
+  soutenons la fin de cette exonération, qui se décide au niveau européen et
+  international, et non par une loi française. D'ici là, nous nous opposons au
+  subventionnement de lignes aériennes intérieures qui concurrencent un train
+  lui-même subventionné : payer deux fois pour le même trajet est le contraire
+  d'une politique.</li>
+  <li><strong>Le vélo et la marche.</strong> Ils ne relèvent pas d'un volet
+  national : les aménagements se décident et se paient localement, et nous ne
+  proposons pas de le changer. Ce que notre programme leur apporte est
+  indirect mais réel — une tarification des nuisances qui renchérit la voiture
+  là où elle gêne, et la publication du coût par usager, qui rend enfin
+  comparable ce qu'une collectivité dépense par déplacement en bus, en train
+  ou en piste cyclable.</li>
+  <li><strong>L'accessibilité.</strong> C'est une obligation légale, et notre
+  mesure 1 lui donne un levier qu'elle n'a pas aujourd'hui : ce qui figure au
+  cahier des charges d'un appel d'offres est exigible et pénalisable, ce qui
+  figure dans un plan pluriannuel ne l'est pas. Nous proposons que le niveau
+  d'accessibilité attendu soit une clause contractuelle notée, au même titre
+  que la ponctualité.</li>
+  <li><strong>L'outre-mer et la Corse.</strong> La continuité territoriale est
+  exactement ce que nous appelons une
+  """ + g.terme("obligation de service public") + """ : un service que le
+  marché ne rendrait pas seul, que la collectivité achète explicitement.
+  Qu'elle soit chiffrée et votée plutôt que noyée dans un déficit vaut là
+  autant qu'ailleurs.</li>
+  <li><strong>Les ports.</strong> Nous n'en traitons pas, et nous n'avons pas
+  de position arrêtée. Le dire vaut mieux que d'improviser.</li>
+</ul>""",
+        identifiant="perimetre",
     )
 
     o1 = g.cle(
@@ -1127,13 +1502,18 @@ comparaison.</p>""",
     o4 = g.cle(
         "« Vous voulez faire payer la route »",
         "Elle est déjà payée, et mal : " + v("ticpe") + " de taxe au litre, "
-        "prélevés partout au même tarif, qui partent au budget général.",
+        "prélevés partout au même tarif, sans lien avec une route.",
         f"""
-<p>L'automobiliste français paie une accise parmi les plus élevées d'Europe,
-sans qu'un euro lui revienne sous forme d'entretien garanti : la
-{g.terme('TICPE')} n'est pas affectée. Notre proposition ne consiste pas à
-faire payer un usage gratuit, mais à remplacer un prélèvement aveugle par un
-prix qui dépend du lieu, de l'heure et de la nuisance — à recettes
+<p>Précision que nous devons à l'honnêteté, parce que ce site a écrit le
+contraire : la {g.terme('TICPE')} ne part pas tout entière au budget général.
+L'État en garde environ la moitié, les collectivités en reçoivent une large
+part, l'agence des infrastructures une fraction. Ce qui est vrai — et qui
+suffit — c'est qu'aucune de ces parts n'est liée à une dépense
+d'infrastructure identifiée : elles alimentent des budgets, pas des routes.
+L'automobiliste paie donc une accise parmi les plus élevées d'Europe sans
+qu'aucun entretien lui soit garanti en retour. Notre proposition ne consiste
+pas à faire payer un usage gratuit, mais à remplacer un prélèvement aveugle
+par un prix qui dépend du lieu, de l'heure et de la nuisance — à recettes
 constantes.</p>
 <p>Un effet secondaire, rarement relevé : la taxe au litre s'effondre à mesure
 que le parc s'électrifie, alors que l'usure des routes, elle, ne diminue pas.
@@ -1191,7 +1571,15 @@ grossière d'une nuisance qu'on sait aujourd'hui mesurer autrement.</p>
 <p>Ajoutons ce que l'interdiction fait socialement : elle exclut de la ville
 ceux qui changent de voiture le plus rarement, c'est-à-dire ceux qui en ont le
 moins les moyens. Un prix, lui, laisse le choix — rouler moins, rouler
-autrement, ou payer ce que cela coûte aux autres.</p>""",
+autrement, ou payer ce que cela coûte aux autres.</p>
+<p>Mais l'objectif, lui, n'est pas négociable, et l'épisode de 2026 le montre :
+le Parlement a supprimé les zones à faibles émissions, le Conseil
+constitutionnel a censuré la suppression pour un motif de procédure, et rien
+n'aurait été réglé si elle avait tenu. La France est sous astreinte,
+{v('astreinte_air')} au plus fort, pour des valeurs limites qu'elle devait
+respecter depuis 2010. C'est pourquoi notre mesure 4 ne supprime rien à sec :
+la restriction ne tombe que là où la tarification la remplace, et elle revient
+de plein droit si les valeurs limites ne sont pas tenues.</p>""",
         identifiant="zfe",
     )
 
@@ -1251,17 +1639,45 @@ réfuter par le calcul.</p>""",
         identifiant="rural",
     )
 
-    corps_sections = "\n".join([o1, o2, o3, o4, o5, o6, o7, o8, o9, o10])
+    o_garanties = g.cle(
+        "« Vos garanties ne valent que jusqu'à la prochaine loi » — et c'est "
+        "vrai",
+        "Une affectation de recette se défait par une loi de finances, et une "
+        "interdiction de fichier par une loi ordinaire. Nous n'avons pas de "
+        "réponse qui ferme la question.",
+        """
+<p>Notre programme repose sur des engagements de méthode : publier les coûts,
+mettre en concurrence sauf motivation publique, affecter le produit de la
+redevance, ne constituer aucun fichier des trajets. Tous prennent la forme
+d'une loi, et une loi se défait par une loi. La TICPE en est la démonstration :
+son affectation aux routes a disparu sans que personne ne s'en aperçoive.</p>
+<p>Ce que nous pouvons faire, nous le proposons : inscrire l'affectation et
+l'interdiction du fichier dans une loi organique, qui ne se modifie pas au
+détour d'un budget, et nous déclarer favorables à une garantie
+constitutionnelle pour la protection des déplacements. Ce que nous ne pouvons
+pas faire, c'est lier une majorité future. Un programme qui prétendrait le
+contraire mentirait sur ce qu'est une loi.</p>
+<p>Reste un argument, et il est faible : la transparence, elle, est difficile à
+défaire. Une donnée publiée pendant cinq ans a des usagers, des journalistes et
+des élus qui s'en servent, et la supprimer se voit. C'est peu, et c'est
+pourtant la seule de nos garanties qui se défende toute seule.</p>""",
+        identifiant="garanties-fragiles",
+    )
+
+    corps_sections = "\n".join([o1, o2, o3, o4, o5, o6, o7, o8,
+                                o_ecotaxe, o_recentralisation, o_electriques,
+                                o_gratuite, o_perimetre,
+                                o9, o10, o_garanties])
 
     return f"""
 {tete}
 
-{g.plan(corps_sections, "Les dix objections")}
+{g.plan(corps_sections, "Les seize objections")}
 
 {corps_sections}
 
 {g.note(
-    "Les deux dernières objections sont celles auxquelles nous répondons "
+    "Les trois dernières objections sont celles auxquelles nous répondons "
     "mal. Elles restent en ligne pour cette raison : un programme qui "
     "effacerait ses points faibles au premier contact serait un programme "
     "qu'on ne pourrait pas discuter.",
@@ -1276,6 +1692,121 @@ réfuter par le calcul.</p>""",
     [("Le dépôt, textes et chiffres compris", g.DEPOT, True),
      ("Toutes nos données", "donnees.html", False)],
 )}
+"""
+
+
+# -- qui publie ce site ------------------------------------------------------
+
+
+def mentions() -> str:
+    """Les mentions légales, et ce que ce site ne collecte pas.
+
+    Elle manquait, et c'était la faille la moins coûteuse à corriger : un site
+    politique sans éditeur nommé se fait signaler en une journée, et le
+    reproche — « on ne sait pas qui parle » — porte d'autant mieux que tout le
+    reste du site est consacré à la transparence.
+    """
+    tete = g.affiche(
+        "Qui publie ce site",
+        "Un éditeur nommé, " + g.cle_texte("aucune donnée collectée") + ".",
+        "Un site qui demande à ses lecteurs de vérifier ses chiffres doit "
+        "commencer par dire qui l'écrit, qui le paie, et ce qu'il fait de "
+        "leur visite. La réponse à la dernière question est : rien.",
+    )
+
+    editeur = g.cle(
+        "L'éditeur et le directeur de la publication",
+        "Ce site est édité par le " + g.EDITEUR + ".",
+        f"""
+<ul class="serree">
+  <li><strong>Éditeur</strong> : {g.EDITEUR}.</li>
+  <li><strong>Siège</strong> : {g.SIEGE_EDITEUR}.</li>
+  <li><strong>Directeur de la publication</strong> :
+  {g.DIRECTEUR_PUBLICATION}.</li>
+  <li><strong>Contact</strong> : {g.CONTACT}.</li>
+  <li><strong>Hébergeur</strong> : {g.HEBERGEUR}.</li>
+</ul>
+<p>Ce site est un document politique. Il n'est ni une source officielle, ni un
+service d'information sur les transports : pour vos trajets, voyez votre
+autorité organisatrice.</p>""",
+        identifiant="editeur",
+    )
+
+    donnees_perso = g.cle(
+        "Ce que ce site collecte : rien",
+        "Aucun compte, aucun cookie, aucune mesure d'audience, aucune "
+        "ressource chargée chez un tiers. Le simulateur calcule dans votre "
+        "navigateur et n'a aucun moyen d'envoyer quoi que ce soit.",
+        """
+<ul class="serree">
+  <li><strong>Pas de cookie, pas de mesure d'audience.</strong> Ce site
+  n'installe rien sur votre appareil et ne compte pas ses visiteurs.</li>
+  <li><strong>Aucune ressource tierce.</strong> Polices, pictogrammes, feuille
+  de style : tout vient de ce site. Une requête vers un serveur extérieur
+  emporterait votre adresse IP chez lui, et un témoin automatique vérifie
+  qu'aucune page n'en fait.</li>
+  <li><strong>Le simulateur ne transmet rien.</strong> Son formulaire n'a ni
+  adresse ni méthode d'envoi, et son bouton n'est pas un bouton de
+  soumission : même si le calcul échouait, vos réponses ne pourraient pas
+  quitter la page. Ce n'était pas le cas avant septembre 2026, et c'est une
+  correction, pas une précaution.</li>
+</ul>
+<p>Une réserve, parce qu'elle est vraie et qu'on ne la lit jamais :
+<strong>l'hébergeur, lui, voit votre adresse IP</strong>, comme tout serveur
+qui vous envoie une page. Nous n'y avons pas accès et n'en faisons rien, mais
+promettre l'anonymat complet serait un mensonge technique.</p>""",
+        identifiant="donnees-personnelles",
+    )
+
+    financement = g.cle(
+        "Ce que ce site coûte, et qui le paie",
+        "L'hébergement est gratuit, le site ne diffuse aucune publicité et ne "
+        "reçoit aucun paiement.",
+        f"""
+<p>Ce site est une collection de pages statiques hébergées gratuitement. Il
+n'affiche aucune publicité commerciale, ne vend rien, ne sollicite aucun don
+et n'a aucun moyen d'encaisser quoi que ce soit. Ses frais éventuels — un nom
+de domaine — sont pris en charge par le {g.EDITEUR}.</p>
+<p>En période électorale, les dépenses de propagande d'un parti obéissent à
+des règles de financement et de comptabilisation précises. Le détail des
+dépenses engagées pour ce site relève du mandataire financier du
+{g.EDITEUR} : {g.CONTACT}.</p>""",
+        identifiant="financement",
+    )
+
+    reutilisation = g.cle(
+        "Réutiliser, corriger, contredire",
+        "Les textes sont sous licence libre, le code aussi, et le dépôt est "
+        "public : une critique argumentée peut être déposée là où le site est "
+        "écrit.",
+        f"""
+<ul class="serree">
+  <li><strong>Textes et contenus</strong> : Creative Commons BY-SA 4.0. Vous
+  pouvez les reprendre, y compris pour nous contredire, à condition de citer
+  la source et de partager aux mêmes conditions.</li>
+  <li><strong>Code</strong> : licence Apache 2.0.</li>
+  <li><strong>Polices</strong> : SIL Open Font License.
+  <strong>Pictogrammes</strong> : Lucide, licence ISC.</li>
+</ul>
+<p>Une erreur de chiffre, une source mal citée, une objection qui manque : le
+dépôt est ouvert, et c'est là que cela se corrige.
+<a href="{g.DEPOT}">{g.DEPOT}</a></p>
+<p>Les chiffres marqués « à vérifier » sur la page
+<a href="donnees.html">Données et sources</a> attendent précisément qu'on les
+confronte à leur source. Nous préférons qu'un contradicteur le fasse avant un
+débat plutôt que pendant.</p>""",
+        identifiant="reutilisation",
+    )
+
+    corps_sections = "\n".join([editeur, donnees_perso, financement,
+                                 reutilisation])
+
+    return f"""
+{tete}
+
+{g.plan(corps_sections)}
+
+{corps_sections}
 """
 
 
@@ -1411,7 +1942,7 @@ def page_donnees() -> str:
 {precisions}
 
 <h2 id="pays">Les comparaisons internationales</h2>
-<p>Les cinq pays comparés portent chacun leur source, leur millésime et leur
+<p>Les six pays comparés portent chacun leur source, leur millésime et leur
 réserve — celle-ci est écrite dans la fiche du pays, sur la page
 <a href="comparaisons.html">Ailleurs</a>, et non reléguée ici.</p>
 {pays}

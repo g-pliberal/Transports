@@ -145,35 +145,47 @@ CHIFFRES: tuple[Chiffre, ...] = (
     ),
     Chiffre(
         cle="ticpe",
-        valeur="≈ 33 Md€",
+        valeur="≈ 30,5 Md€",
         libelle="de taxe sur les carburants (TICPE) perçus en un an",
-        annee="2023",
-        source="Projet de loi de finances, « Voies et moyens », tome I",
+        annee="2025",
+        source="FIPECO, « Les taxes sur les carburants », d'après les comptes "
+        "nationaux",
         fiabilite="ordre",
-        precision="La TICPE est le quatrième impôt de l'État par le rendement. "
-        "Une part est affectée aux régions et aux départements ; le reste "
-        "finance le budget général, et non les routes.",
-        lien="https://www.budget.gouv.fr/",
+        precision="Quatrième impôt de l'État par le rendement. Contrairement "
+        "à ce qui se dit souvent — et à ce que ce site a lui-même écrit avant "
+        "de le vérifier —, ce produit ne part pas tout entier au budget "
+        "général : l'État en conserve environ 16,3 Md€, les collectivités en "
+        "reçoivent environ 12,1 Md€ et l'agence de financement des "
+        "infrastructures environ 1,2 Md€. Ce qui reste vrai, c'est "
+        "qu'aucune de ces fractions n'est liée à une dépense "
+        "d'infrastructure identifiée : une recette affectée à un budget n'est "
+        "pas une recette affectée à une route.",
+        lien="https://www.fipeco.fr/fiche/Les-taxes-sur-les-carburants",
     ),
     Chiffre(
         cle="ticpe_gazole",
-        valeur="0,5981 € par litre",
+        valeur="0,5940 € par litre",
         libelle="de TICPE sur le gazole routier, tarif normal",
-        annee="2024",
-        source="Code des impositions sur les biens et services, art. L312-35",
+        annee="2026",
+        source="Code des impositions sur les biens et services, art. L312-35 ; "
+        "tarif 2026 relevé via FIPECO",
         fiabilite="publie",
-        precision="Tarif de métropole hors régimes particuliers. La TVA à "
-        "20 % s'applique ensuite sur un prix qui comprend déjà cette accise : "
-        "l'impôt est donc taxé.",
+        precision="Tarif de métropole hors régimes particuliers et hors "
+        "majoration régionale, que les régions peuvent porter jusqu'à deux "
+        "centimes et demi par litre. La TVA à 20 % s'applique ensuite sur un "
+        "prix qui comprend déjà cette accise : l'impôt est donc taxé.",
         lien="https://www.legifrance.gouv.fr/codes/id/LEGITEXT000044595989/",
     ),
     Chiffre(
         cle="ticpe_essence",
         valeur="0,6829 € par litre",
         libelle="de TICPE sur l'essence SP95-E5, tarif normal",
-        annee="2024",
-        source="Code des impositions sur les biens et services, art. L312-35",
+        annee="2026",
+        source="Code des impositions sur les biens et services, art. L312-35 ; "
+        "tarif 2026 relevé via FIPECO",
         fiabilite="publie",
+        precision="L'écart avec le gazole — près de neuf centimes par litre — "
+        "est ce qui subsiste de l'avantage fiscal consenti au diesel.",
     ),
     Chiffre(
         cle="part_taxes_carburant",
@@ -357,22 +369,33 @@ CHIFFRES: tuple[Chiffre, ...] = (
     ),
     Chiffre(
         cle="fret_ferroviaire",
-        valeur="≈ 10 %",
+        valeur="≈ 9 %",
         libelle="des marchandises transportées par le rail en France",
-        annee="2022",
-        source="SDES, bilan annuel des transports",
-        fiabilite="ordre",
-        precision="La part modale du fret ferroviaire a été divisée par deux "
-        "en vingt-cinq ans, alors qu'elle progressait en Allemagne et en "
-        "Autriche sur la même période.",
+        annee="2024",
+        source="Autorité de régulation des transports, bilan du marché "
+        "ferroviaire France-Europe 2024",
+        fiabilite="publie",
+        precision="Part du transport terrestre de marchandises mesurée en "
+        "tonnes-kilomètres. Elle a été divisée par deux en vingt-cinq ans, "
+        "alors qu'elle progressait en Allemagne et en Autriche sur la même "
+        "période.",
+        lien="https://www.autorite-transports.fr/wp-content/uploads/2026/06/"
+        "art-bilan-ferroviaire-france-europe-2024.pdf",
     ),
     Chiffre(
         cle="fret_ue",
-        valeur="≈ 17 %",
+        valeur="≈ 16,9 %",
         libelle="la moyenne européenne du fret ferroviaire",
-        annee="2022",
-        source="Eurostat, transport modal split of freight transport",
-        fiabilite="verifier",
+        annee="2024",
+        source="Autorité de régulation des transports, bilan du marché "
+        "ferroviaire France-Europe 2024, d'après Eurostat",
+        fiabilite="publie",
+        precision="La moyenne européenne recule elle aussi — de trois "
+        "dixièmes de point en un an. La France ne décroche pas d'un peloton "
+        "qui avance : elle est deux fois plus bas dans un peloton qui "
+        "ralentit.",
+        lien="https://www.autorite-transports.fr/wp-content/uploads/2026/06/"
+        "art-bilan-ferroviaire-france-europe-2024.pdf",
     ),
     Chiffre(
         cle="emissions_transports",
@@ -460,9 +483,12 @@ CHIFFRES: tuple[Chiffre, ...] = (
         "allemands, cités de seconde main",
         fiabilite="verifier",
         precision="Mesure constatée sur les lots régionaux effectivement "
-        "remis en concurrence, à service comparable. L'écart tient autant à "
-        "la renégociation des contrats qu'au changement d'opérateur, et rien "
-        "ne dit qu'il se reproduirait à l'identique en France.",
+        "remis en concurrence, à service comparable. Ce chiffre a longtemps "
+        "porté l'argumentaire de ce site ; il ne le porte plus. Depuis 2026, "
+        "les résultats français des premiers lots TER sont publiés, et ils "
+        "valent mieux qu'une référence étrangère de seconde main : c'est eux "
+        "qu'il faut citer, et l'Allemagne ne sert plus ici qu'à montrer que "
+        "le résultat n'est pas un accident français.",
     ),
     Chiffre(
         cle="baisse_prix_italie",
@@ -491,17 +517,166 @@ CHIFFRES: tuple[Chiffre, ...] = (
     ),
     Chiffre(
         cle="ter_ouverts",
+        valeur="≈ 20 %",
+        libelle="de l'offre ferroviaire conventionnée attribuée après appel "
+        "d'offres",
+        annee="2026",
+        source="Autorité de régulation des transports, étude annuelle sur "
+        "l'ouverture à la concurrence des services ferroviaires, édition 2026",
+        fiabilite="publie",
+        precision="Part de l'offre, et non nombre de contrats : onze lots "
+        "seulement ont été attribués, sur une soixantaine que la France doit "
+        "remettre en concurrence d'ici au 25 décembre 2033. L'ouverture "
+        "avance donc, mais par les plus gros lots et avec sept ans de retard "
+        "sur son propre calendrier.",
+        lien="https://www.autorite-transports.fr/communiques/"
+        "ouverture-du-marche-ferroviaire-de-premiers-benefices-concrets-"
+        "trois-defis-pour-les-perenniser/",
+    ),
+    # -- ce que l'ouverture a produit ICI ------------------------------------
+    #
+    # Ces rangées ont remplacé, en septembre 2026, l'argumentaire fondé sur
+    # les seuls appels d'offres allemands. Un chiffre français, récent et
+    # parlementaire vaut mieux qu'un chiffre étranger de seconde main — y
+    # compris quand le rapport qui le porte est, au total, sévère.
+    Chiffre(
+        cle="baisse_couts_ter",
+        valeur="20 à 30 %",
+        libelle="de baisse des coûts de production sur les lots TER remis en "
+        "concurrence",
+        annee="2026",
+        source="Sénat, rapport d'information n° 633 (2025-2026), "
+        "« L'impact de la concurrence dans le ferroviaire sur les finances "
+        "publiques », Marie-Claire Carrère-Gée et Hervé Maurey",
+        fiabilite="publie",
+        precision="Fourchette relevée par les rapporteurs sur les premiers "
+        "lots attribués : −21 % sur l'étoile d'Amiens, −25 % en Pays de la "
+        "Loire, −17 % de subvention en Nouvelle-Aquitaine, et une offre "
+        "augmentée de 75 % à 100 % à coût constant en région Sud. Le même "
+        "rapport conclut pourtant à un « bilan incertain » pour les finances "
+        "publiques : les gains d'exploitation sont réels, les coûts de "
+        "transition le sont aussi.",
+        lien="https://www.senat.fr/rap/r25-633/r25-633_mono.html",
+    ),
+    Chiffre(
+        cle="cout_transition_ter",
+        valeur="50 à 70 M€",
+        libelle="par atelier de maintenance neuf qu'impose un lot TER mis en "
+        "concurrence",
+        annee="2026",
+        source="Sénat, rapport d'information n° 633 (2025-2026)",
+        fiabilite="publie",
+        precision="La région Sud anticipe environ 200 M€ à ce titre, la "
+        "Nouvelle-Aquitaine environ 193 M€. S'y ajoutent l'indemnisation des "
+        "candidats malheureux — jusqu'à 600 000 € par candidat — et le "
+        "renforcement des services TER des régions, de l'ordre de dix "
+        "spécialistes supplémentaires, soit 25 % à 30 % d'effectifs en plus. "
+        "C'est le chiffre que ce site citait comme « réel et mal documenté » : "
+        "il est désormais documenté, et il figure ici pour cette raison.",
+        lien="https://www.senat.fr/rap/r25-633/r25-633_mono.html",
+    ),
+    Chiffre(
+        cle="frequentation_ouverture",
+        valeur="≈ 14 %",
+        libelle="de hausse de la fréquentation ferroviaire depuis 2019",
+        annee="2026",
+        source="Autorité de régulation des transports, étude annuelle sur "
+        "l'ouverture à la concurrence, édition 2026",
+        fiabilite="publie",
+        precision="Sur les lots conventionnés remis en concurrence, l'offre "
+        "a augmenté de 30 % à 100 % à coûts identiques ou en baisse. "
+        "L'ouverture n'a pas fait rouler moins de trains : elle en a fait "
+        "rouler davantage pour le même argent.",
+        lien="https://www.autorite-transports.fr/communiques/"
+        "ouverture-du-marche-ferroviaire-de-premiers-benefices-concrets-"
+        "trois-defis-pour-les-perenniser/",
+    ),
+    Chiffre(
+        cle="prix_paris_lyon",
         valeur="≈ 10 %",
-        libelle="des services TER attribués après mise en concurrence",
-        annee="2024",
-        source="Autorité de régulation des transports, suivi de l'ouverture "
-        "du marché conventionné",
+        libelle="de baisse du prix moyen sur Paris-Lyon depuis l'ouverture",
+        annee="2026",
+        source="Autorité de régulation des transports, étude annuelle sur "
+        "l'ouverture à la concurrence, édition 2026",
+        fiabilite="publie",
+        precision="Mesurée entre 2019 et 2024 sur l'axe où un second "
+        "opérateur fait rouler ses propres trains, quand les prix "
+        "progressaient d'environ 10 % sur l'ensemble du réseau. La "
+        "fréquentation de l'axe a augmenté de 20 % sur la même période. "
+        "C'est l'équivalent français de ce que l'Italie a connu sur "
+        "Rome-Milan, et il n'est plus nécessaire d'aller le chercher à "
+        "l'étranger.",
+        lien="https://www.autorite-transports.fr/communiques/"
+        "ouverture-du-marche-ferroviaire-de-premiers-benefices-concrets-"
+        "trois-defis-pour-les-perenniser/",
+    ),
+    Chiffre(
+        cle="accise_electricite",
+        valeur="0,0306 € par kWh",
+        libelle="d'accise sur l'électricité, tarif normal des ménages",
+        annee="2026",
+        source="Bulletin officiel des finances publiques, tarifs d'accise "
+        "applicables en 2026",
+        fiabilite="publie",
+        precision="Tarif applicable depuis le 1er août 2026, après 30,85 € "
+        "par MWh de février à juillet. Un véhicule électrique acquitte cette "
+        "accise sur ce qu'il consomme : rapporté au kilomètre, c'est environ "
+        "six fois moins que ce qu'un véhicule thermique paie sur son "
+        "carburant — pour une usure de la chaussée qui, elle, ne diffère pas. "
+        "Ce site employait jusqu'en septembre 2026 le tarif du bouclier "
+        "tarifaire, périmé depuis deux ans.",
+        lien="https://bofip.impots.gouv.fr/bofip/14903-PGP.html",
+    ),
+    # -- ce que coûte une réforme ratée --------------------------------------
+    Chiffre(
+        cle="ecotaxe_cout",
+        valeur="≈ 1 Md€",
+        libelle="dépensés pour une écotaxe poids lourds qui n'a jamais rien "
+        "perçu",
+        annee="2017",
+        source="Cour des comptes, rapport public annuel 2017",
+        fiabilite="ordre",
+        precision="Environ 958 M€ d'indemnités versées au consortium "
+        "Ecomouv', et de l'ordre de 70 M€ engagés par les administrations. "
+        "La taxe a été suspendue en octobre 2013 après la fronde des "
+        "« bonnets rouges », le contrat résilié en octobre 2014, et les 174 "
+        "portiques installés n'ont jamais servi. La Cour y a vu un « échec de "
+        "politique publique » et un « gâchis patrimonial, social et "
+        "industriel ».",
+        lien="https://www.ccomptes.fr/",
+    ),
+    Chiffre(
+        cle="astreinte_air",
+        valeur="10 M€ par semestre",
+        libelle="d'astreinte prononcée contre l'État pour la pollution de "
+        "l'air",
+        annee="2021-2023",
+        source="Conseil d'État, contentieux Les Amis de la Terre "
+        "(n° 428409)",
         fiabilite="verifier",
-        precision="Six ans après la loi qui l'a permise, l'ouverture reste "
-        "marginale : quelques lots en Provence-Alpes-Côte d'Azur, dans les "
-        "Hauts-de-France et le Grand Est. La plupart des régions ont "
-        "prolongé leur convention avec l'opérateur historique jusqu'à la "
-        "date limite.",
+        precision="Montant record, ramené ensuite à 5 M€ par semestre. Les "
+        "valeurs limites de dioxyde d'azote, qui devaient être respectées "
+        "depuis 2010, le sont toujours dépassées à Paris et à Lyon. C'est ce "
+        "contentieux, et non une lubie administrative, qui a rendu les zones "
+        "à faibles émissions obligatoires : toute proposition de les "
+        "supprimer doit dire ce qui tient leur place.",
+        lien="https://www.conseil-etat.fr/",
+    ),
+    Chiffre(
+        cle="concessions_investissements",
+        valeur="≈ 10 Md€",
+        libelle="d'investissements restant dus par les concessionnaires avant "
+        "la fin des contrats",
+        annee="2024",
+        source="Autorité de régulation des transports, rapport sur "
+        "l'économie des concessions autoroutières, troisième édition",
+        fiabilite="verifier",
+        precision="Les sept concessions historiques s'achèvent entre 2031 "
+        "(Sanef) et 2036 (Area), en passant par Escota en 2032, la SAPN en "
+        "2033, Cofiroute en 2034 et APRR en 2035. Le régulateur alerte sur "
+        "les obligations de fin de contrat, qui décident de l'état dans "
+        "lequel le réseau reviendra à l'État.",
+        lien="https://www.autorite-transports.fr/",
     ),
 )
 
@@ -517,6 +692,9 @@ CHIFFRES_TOLERES: dict[str, str] = {
             "source.",
     "10 %": "Taux réduit de TVA applicable aux billets de train et aux "
             "transports de voyageurs.",
+    "100 km": "Dénominateur d'une unité de consommation — « litres aux "
+              "100 km », « kWh aux 100 km » —, et non une distance affirmée. "
+              "Il paraît dans les hypothèses du simulateur.",
     "2,95 %": "Plafond légal du taux de versement mobilité en Île-de-France, "
               "cité dans la précision de la rangée « versement mobilité ».",
 }
@@ -539,12 +717,18 @@ def valeur(cle: str) -> str:
 
 # -- les pays comparés -------------------------------------------------------
 #
-# Cinq, et c'est un choix. Ce sont les pays qui ont fait, avant nous, l'une des
+# Six, et c'est un choix. Ce sont les pays qui ont fait, avant nous, l'une des
 # deux choses que ce programme propose : ouvrir l'exploitation ferroviaire à
 # d'autres opérateurs, ou faire payer l'usage de la route plutôt que la
 # possession du véhicule. Le Royaume-Uni y figure parce qu'il a échoué sur une
 # partie du chemin : une comparaison qui ne retiendrait que les succès ne
 # servirait qu'à convaincre ceux qui le sont déjà.
+#
+# La France y figure pour la même raison, et c'est la ligne la plus importante
+# du tableau : elle a tenté la mesure 3 de ce programme, en 2013, et s'est
+# cassé les dents dessus pour un milliard d'euros. Un programme qui citerait la
+# redevance suisse sans citer l'écotaxe française choisirait ses exemples, et
+# le premier contradicteur venu le lui dirait.
 
 PAYS: tuple[Pays, ...] = (
     Pays(
@@ -672,6 +856,43 @@ PAYS: tuple[Pays, ...] = (
                 "thèse, pas pour elle.",
     ),
     Pays(
+        nom="France",
+        drapeau="🇫🇷",
+        investissement="sans objet : le dispositif n'a jamais fonctionné",
+        usager="aucun — la taxe n'a jamais rien perçu",
+        modele="Une redevance kilométrique sur les poids lourds, votée à "
+               "l'unanimité, construite, puis abandonnée en 2013 sous la "
+               "pression, avant d'avoir perçu un euro.",
+        annee="2013-2017",
+        source="Cour des comptes, rapport public annuel 2017",
+        fiabilite="ordre",
+        detail=[
+            "L'écotaxe poids lourds était la jumelle française de la "
+            "redevance suisse : faire payer le kilomètre parcouru et affecter "
+            "le produit aux infrastructures. Le principe en avait été voté "
+            "sans opposition.",
+            "Cent soixante-quatorze portiques ont été installés, un "
+            "consortium payé pour construire et exploiter le dispositif, puis "
+            "la taxe a été suspendue en octobre 2013 devant la fronde des "
+            "« bonnets rouges », et le contrat résilié un an plus tard.",
+            "Le contribuable a versé environ 1 Md€ — indemnités et frais "
+            "d'administration — pour une taxe qui n'a rien perçu. Les "
+            "portiques sont toujours en place, et l'État les entretient.",
+        ],
+        lecon="Une réforme du financement des transports ne meurt pas de son "
+              "économie : elle meurt de son acceptabilité. L'écotaxe est "
+              "tombée parce qu'elle arrivait sans contrepartie visible, "
+              "parce qu'elle frappait d'abord une profession organisée, et "
+              "parce que son produit n'était lisible pour personne. C'est la "
+              "leçon la plus chère de ce tableau, et c'est la nôtre.",
+        reserve="Nous inscrivons notre propre pays au titre de l'échec, et ce "
+                "n'est pas une coquetterie : la troisième mesure de ce "
+                "programme est une cousine de l'écotaxe. Quiconque nous "
+                "l'oppose a raison de le faire, et cette mesure doit être "
+                "jugée sur ce qu'elle en a tiré — pas sur la promesse que "
+                "cette fois sera différente.",
+    ),
+    Pays(
         nom="Japon",
         drapeau="🇯🇵",
         investissement="porté par des opérateurs privés rentables",
@@ -712,16 +933,19 @@ PAYS: tuple[Pays, ...] = (
 # constante ne s'est glissée dans le JavaScript.
 
 PARAMETRES_SIMULATEUR: dict[str, object] = {
-    "ticpe_gazole_litre": 0.5981,
+    "ticpe_gazole_litre": 0.5940,
     "ticpe_essence_litre": 0.6829,
     "tva": 0.20,
     "conso_gazole_100km": 5.8,
     "conso_essence_100km": 6.8,
-    "accise_electricite_kwh": 0.0225,
+    "accise_electricite_kwh": 0.0306,
     "conso_electrique_100kwh": 17.0,
     "population": 68_000_000.0,
     "actifs_occupes": 28_000_000.0,
     "concours_publics_transports": 30_000_000_000.0,
+    # Ces deux derniers ne sont PAS additionnés au reste par le simulateur, et
+    # ne peuvent pas l'être : voir RESERVES_SIMULATEUR et le commentaire de
+    # `reperesCollectifs` dans moteur/js/simulateur.js.
     "versement_mobilite_total": 10_000_000_000.0,
     "part_recettes_usagers_urbain": 0.20,
     "part_recettes_usagers_ter": 0.25,
@@ -759,7 +983,11 @@ DESCRIPTIONS_SIMULATEUR: dict[str, tuple[str, str]] = {
                        "grandeur)</strong>"),
     "concours_publics_transports": ("euros", "Concours publics annuels aux "
                                     "transports, tous réseaux confondus "
-                                    "<strong>(agrégat reconstitué)</strong>"),
+                                    "<strong>(agrégat reconstitué, qui "
+                                    "COMPREND le versement mobilité et les "
+                                    "subventions d'exploitation : il ne "
+                                    "s'additionne donc à aucun des deux)"
+                                    "</strong>"),
     "versement_mobilite_total": ("euros", "Produit annuel du versement "
                                  "mobilité payé par les employeurs"),
     "part_recettes_usagers_urbain": ("part", "Part du coût d'un réseau urbain "
@@ -807,15 +1035,28 @@ RESERVES_SIMULATEUR: tuple[tuple[str, str], ...] = (
         "RECONSTITUÉ : il additionne des sources qui n'ont ni le même "
         "périmètre ni le même millésime, et il ne comprend ni l'entretien "
         "routier des collectivités ni les dépenses fiscales. Il sert à donner "
-        "un ordre de grandeur par habitant, et rien de plus.",
+        "un ordre de grandeur par habitant, et rien de plus. Surtout : il "
+        "COMPREND le versement mobilité et les subventions d'exploitation qui "
+        "paient vos propres trajets. L'ajouter à ces deux montants "
+        "compterait le même euro deux ou trois fois — ce que ce simulateur a "
+        "fait jusqu'en septembre 2026, et ne fait plus. Il est désormais "
+        "affiché comme repère, à côté du calcul, et jamais dedans.",
     ),
     (
         "redevance_usage_km",
         "La redevance kilométrique de remplacement est une HYPOTHÈSE DE "
-        "TRAVAIL, calibrée pour rendre à peu près ce que la taxe sur les "
-        "carburants rapporte aujourd'hui sur un véhicule moyen. Son niveau "
-        "réel dépendrait du périmètre retenu, de la modulation par zone et "
-        "par heure, et d'un débat qui n'a pas eu lieu.",
+        "TRAVAIL, calibrée sur ce qu'un véhicule THERMIQUE MOYEN acquitte "
+        "aujourd'hui au kilomètre. Elle a donc une conséquence qu'il faut "
+        "dire plutôt que la laisser découvrir : appliquée telle quelle, elle "
+        "multiplierait par plus de six ce qu'un véhicule électrique paie "
+        "aujourd'hui, qui est presque rien. C'est la logique même d'un prix "
+        "d'usage — la route s'use sous un véhicule électrique comme sous un "
+        "autre —, mais c'est aussi une hausse brutale pour des acheteurs qui "
+        "ont choisi leur véhicule sous un autre régime fiscal. Le programme "
+        "propose pour cette raison une entrée progressive, et le simulateur "
+        "affiche l'écart sans l'adoucir. Son niveau réel dépendrait du "
+        "périmètre retenu, de la modulation par zone et par heure, et d'un "
+        "débat qui n'a pas eu lieu.",
     ),
     (
         "part_recettes_usagers_urbain",

@@ -24,6 +24,27 @@ SITE_SANTE = "https://github.com/g-pliberal/sante"
 
 NOM_DU_SITE = "Transports : payer ce qu'on utilise"
 
+# -- qui publie ce site ------------------------------------------------------
+#
+# La loi pour la confiance dans l'économie numérique impose à tout éditeur de
+# site de se nommer : raison sociale, directeur de la publication, hébergeur,
+# moyen de contact. Un site politique qui ne le fait pas offre à ses
+# adversaires un signalement gratuit, et à ses lecteurs une bonne raison de se
+# demander qui parle.
+#
+# LES TROIS VALEURS MARQUÉES « À COMPLÉTER » DOIVENT L'ÊTRE AVANT TOUTE
+# PUBLICATION. Elles sont ici, en clair, et non enfouies dans une page, pour
+# qu'on ne puisse pas les oublier.
+A_COMPLETER = "à compléter avant publication"
+
+EDITEUR = "Parti libéral français"
+SIEGE_EDITEUR = A_COMPLETER
+DIRECTEUR_PUBLICATION = A_COMPLETER
+CONTACT = A_COMPLETER
+
+HEBERGEUR = ("GitHub, Inc. — GitHub Pages, 88 Colin P. Kelly Jr. Street, "
+             "San Francisco, CA 94107, États-Unis")
+
 # La navigation par FONCTION, et non par page : le constat, l'alternative, la
 # preuve, la confiance. C'est l'ordre dans lequel un électeur pose ses
 # questions — « qu'est-ce qui ne va pas ? », « que proposez-vous ? », « qu'est-ce
@@ -35,7 +56,8 @@ GROUPES_NAVIGATION: tuple[tuple[str, tuple[tuple[str, str], ...]], ...] = (
     ("L'alternative", (("reforme.html", "La réforme"),
                        ("simulateur.html", "Ce que vous payez"),
                        ("objections.html", "Objections"))),
-    ("La confiance", (("donnees.html", "Données et sources"),)),
+    ("La confiance", (("donnees.html", "Données et sources"),
+                      ("mentions.html", "Qui publie ce site"))),
 )
 
 PAGES = tuple(chemin for _, liens in GROUPES_NAVIGATION for chemin, _ in liens)
@@ -138,6 +160,8 @@ def pied() -> str:
   d'être repris dans un débat. Textes et code sur
   <a href="{DEPOT}">GitHub</a> (code sous licence Apache 2.0, textes sous
   <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>).</p>
+  <p><a href="mentions.html">Qui publie ce site, comment il est financé, et
+  ce qu'il ne collecte pas</a>.</p>
   <p class="retour-site">Un document du
   <a href="{SITE_PARENT}" target="_top">Parti libéral français</a>. Les autres
   volets du programme : <a href="{SITE_RETRAITES}">retraites</a> et
@@ -229,6 +253,11 @@ GLOSSAIRE: dict[str, str] = {
              "l'accise sur les carburants. Elle est due au litre, quel que "
              "soit l'endroit et l'heure où l'on roule, et son produit va au "
              "budget général — elle ne finance donc pas les routes.",
+    "sillon": "Le droit de faire circuler un train donné, à une heure donnée, "
+              "sur un itinéraire donné. C'est l'unité rare du chemin de fer : "
+              "une voie n'a qu'un nombre limité de sillons par jour, et les "
+              "attribuer, c'est arbitrer entre les voyageurs, les "
+              "marchandises et les travaux d'entretien.",
     "péage ferroviaire": "La redevance que l'exploitant d'un train verse au "
                          "gestionnaire de l'infrastructure pour emprunter la "
                          "voie. En France, elle est parmi les plus élevées "
