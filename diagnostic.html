@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- La couleur du bandeau de tête : sur un téléphone, la barre du navigateur
+     la reprend, et la page commence où elle commence. -->
+<meta name="theme-color" content="#0b3d3a">
+<title>Le système de transport actuel — qui paie, et ce que chacun voit</title>
+<meta name="description" content="Comment fonctionnent les transports français, qui les finance, et les six défauts qui se tiennent : un prix qui ne dit plus rien, des contrats sans prix de référence, la dette comme mode de financement, l&#x27;évaluation après la décision, l&#x27;entretien sacrifié, l&#x27;interdiction à la place du prix.">
+<link rel="icon" href="moteur/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="moteur/icone.svg">
+<link rel="stylesheet" href="moteur/style.css">
+<!-- Écrit par scripts/construire_site.py depuis src/transports/. Ne pas
+     modifier ici : la prochaine construction effacerait la correction. -->
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header class="bandeau"><div class="interieur">
+  <p class="nom"><a href="index.html"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1" /><path d="m9 15-1-1" /><path d="m15 15 1-1" /><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z" /><path d="m8 19-2 3" /><path d="m16 19 2 3" /></svg><span>Transports : payer ce qu&#x27;on utilise</span></a></p>
+  <nav aria-label="Navigation principale"><span class="groupe"><span class="etiquette">Le programme</span><span class="liens"><a href="index.html">Programme</a></span></span><span class="groupe"><span class="etiquette">Le constat</span><span class="liens"><a href="diagnostic.html" aria-current="page">Le système actuel</a><a href="comparaisons.html">Ailleurs</a></span></span><span class="groupe"><span class="etiquette">L&#x27;alternative</span><span class="liens"><a href="reforme.html">La réforme</a><a href="simulateur.html">Ce que vous payez</a><a href="objections.html">Objections</a></span></span><span class="groupe"><span class="etiquette">La confiance</span><span class="liens"><a href="donnees.html">Données et sources</a></span></span></nav>
+</div></header>
+<main id="contenu" tabindex="-1">
+
+<div class="affiche"><p class="surtitre">Le système actuel</p><h1>Un réseau payé par <strong class="cle-texte">trois guichets</strong> que personne ne regarde en même temps.</h1><p class="chapeau">L'usager paie un billet, l'employeur un prélèvement sur les salaires, le contribuable une subvention, et l'automobiliste une taxe qui ne finance pas la route. Chacun de ces quatre flux est défendable. Mis bout à bout, ils forment un système dont personne — ni l'élu, ni l'opérateur, ni le voyageur — ne connaît le prix de revient.</p></div>
+
+<div class="fiches"><div class="fiche"><div class="valeur">≈ 27 000 km</div><div class="etiquette">de lignes ferroviaires exploitées</div><div class="precision"><a href="donnees.html#reseau_ferre">2023 · SNCF Réseau</a></div></div><div class="fiche"><div class="valeur">≈ 12 000 km</div><div class="etiquette">de lignes peu circulées (catégories UIC 7 à 9)</div><div class="precision"><a href="donnees.html#petites_lignes">2023 · SNCF Réseau / rapport Philizot sur les petites lignes</a></div></div><div class="fiche"><div class="valeur">≈ 74 %</div><div class="etiquette">des actifs qui vont travailler en voiture</div><div class="precision"><a href="donnees.html#part_voiture_travail">2021 · INSEE</a></div></div><div class="fiche"><div class="valeur">≈ 30 %</div><div class="etiquette">des émissions françaises de gaz à effet de serre</div><div class="precision"><a href="donnees.html#emissions_transports">2022 · CITEPA</a></div></div></div>
+
+<nav class="plan" aria-label="Dans cette page"><p class="etiquette">Dans cette page</p><ol><li><a href="#fonctionnement" data-vers="fonctionnement">Comment le système fonctionne, en une page</a></li><li><a href="#prix" data-vers="prix">Premier défaut : le prix ne dit plus rien</a></li><li><a href="#monopole" data-vers="monopole">Deuxième défaut : un contrat sans prix de référence</a></li><li><a href="#dette" data-vers="dette">Troisième défaut : la dette comme mode de financement</a></li><li><a href="#projets" data-vers="projets">Quatrième défaut : on décide, puis on évalue</a></li><li><a href="#entretien" data-vers="entretien">Cinquième défaut : l&#x27;entretien perd contre le ruban</a></li><li><a href="#interdiction" data-vers="interdiction">Sixième défaut : interdire plutôt que faire payer</a></li><li><a href="#fret" data-vers="fret">Et le fret, que personne ne regarde</a></li><li><a href="#a-garder" data-vers="a-garder">Ce qu&#x27;il ne faut surtout pas casser</a></li></ol></nav>
+
+<h2>Qui paie, et ce que chacun voit</h2>
+<div class="defilant"><table><caption>Qui finance les transports, et ce que chacun en perçoit</caption><thead><tr><th scope="col">Qui paie</th><th scope="col" class="long texte">Combien</th><th scope="col" class="texte">Ce qu'il voit</th></tr></thead><tbody><tr><th scope="row">Le voyageur</th><td class="long texte">environ 25 % du coût d'un TER, un cinquième d'un réseau urbain de province</td><td class="texte">Le prix du billet</td></tr><tr><th scope="row">L'employeur</th><td class="long texte">≈ 10 Md€ de <span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">versement mobilité</span><span class="bulle" role="note" hidden>Un prélèvement assis sur la masse salariale des employeurs d&#x27;au moins onze salariés, perçu au profit de l&#x27;autorité organisatrice. C&#x27;est la première ressource des transports urbains : il finance plus de trajets que les billets, et n&#x27;apparaît sur aucun ticket.</span></span></td><td class="texte">Une ligne sur un bordereau de cotisations</td></tr><tr><th scope="row">Le contribuable local</th><td class="long texte">la subvention d'équilibre votée par la région ou l'intercommunalité</td><td class="texte">Une ligne dans un budget de plusieurs centaines de pages</td></tr><tr><th scope="row">Le contribuable national</th><td class="long texte">les concours de l'État, ≈ 17 Md€ par an pour le seul ferroviaire</td><td class="texte">Rien</td></tr><tr><th scope="row">L'automobiliste</th><td class="long texte">≈ 33 Md€ de <span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">TICPE</span><span class="bulle" role="note" hidden>Taxe intérieure de consommation sur les produits énergétiques : l&#x27;accise sur les carburants. Elle est due au litre, quel que soit l&#x27;endroit et l&#x27;heure où l&#x27;on roule, et son produit va au budget général — elle ne finance donc pas les routes.</span></span>, plus la TVA qui s'applique par-dessus</td><td class="texte">Un prix à la pompe, dont il ignore la composition</td></tr></tbody></table></div>
+
+<h2>Comment ça marche, et ce qui ne marche pas</h2>
+<section class="cle" id="fonctionnement" tabindex="-1"><h3>Comment le système fonctionne, en une page</h3><p class="reponse">Une collectivité décide du service, achète ce service à un opérateur, et le finance avec un prélèvement sur les salaires, une subvention et des billets. Aucun de ces trois montants n'est rapproché des deux autres.</p>
+<p>La collectivité compétente — la région pour les trains régionaux,
+l'intercommunalité pour les bus, Île-de-France Mobilités en région parisienne —
+est l'<span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">AOM</span><span class="bulle" role="note" hidden>Autorité organisatrice de la mobilité : la collectivité qui décide du service de transport sur son territoire — les lignes, les horaires, les tarifs — et le paie. C&#x27;est la région pour les TER, l&#x27;intercommunalité pour les bus urbains, Île-de-France Mobilités en région parisienne.</span></span>. Elle fixe les lignes, les horaires et les tarifs, puis
+signe un contrat avec un exploitant. Jusqu'en 2019, ce contrat ne pouvait aller
+qu'à l'opérateur historique pour le rail ; depuis, il peut être mis en
+concurrence, et il l'est rarement : ≈ 10 % des services TER.</p>
+<p>Le financement vient d'ailleurs. Le <span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">versement mobilité</span><span class="bulle" role="note" hidden>Un prélèvement assis sur la masse salariale des employeurs d&#x27;au moins onze salariés, perçu au profit de l&#x27;autorité organisatrice. C&#x27;est la première ressource des transports urbains : il finance plus de trajets que les billets, et n&#x27;apparaît sur aucun ticket.</span></span> pèse sur
+la masse salariale des employeurs et rapporte ≈ 10 Md€ par an.
+La subvention d'équilibre vient du budget de la collectivité. Les billets
+apportent le reste — ≈ 20 % du coût d'un réseau urbain
+de province, ≈ 25 % de celui d'un TER.</p>
+<p>Quant à la route, elle est financée à l'envers : ≈ 33 Md€ de taxe sur les
+carburants partent au budget général, tandis que l'entretien des voiries relève
+des départements et des communes, et que l'investissement national dépend d'une
+agence — l'AFIT France, ≈ 4 Md€ de budget annuel — alimentée par des
+fractions de taxes affectées.</p></section>
+<section class="cle" id="prix" tabindex="-1"><h3>Premier défaut : le prix ne dit plus rien</h3><p class="reponse">Quand le billet couvre ≈ 25 % du coût, son montant ne renseigne plus sur ce que le trajet mobilise. Il ne renseigne pas davantage l'élu qui le fixe.</p>
+<p>Un prix sert à deux choses : dire à celui qui achète ce que sa décision
+coûte aux autres, et dire à celui qui produit où il vaut la peine de produire.
+Un prix qui couvre le quart du coût ne fait ni l'un ni l'autre — et le reproche
+ne vise pas la subvention, qui peut être parfaitement justifiée, mais le fait
+qu'elle soit invisible.</p>
+<p>La conséquence se lit dans les arbitrages : une région qui ignore ce que
+coûte le voyageur transporté sur chacune de ses lignes ne peut pas savoir si
+l'argent d'un aller-retour quotidien serait mieux employé en cars cadencés, en
+train, ou en aide directe aux habitants concernés. Elle décide donc à
+l'estime, et le plus souvent en faveur de ce qui se voit.</p></section>
+<section class="cle" id="monopole" tabindex="-1"><h3>Deuxième défaut : un contrat sans prix de référence</h3><p class="reponse">Une convention reconduite sans mise en concurrence ne dit à personne si le service est cher : l'autorité n'a rien à quoi le comparer, et l'opérateur non plus.</p>
+<p>Ce n'est pas une accusation contre les exploitants publics : un monopole
+n'est pas peuplé de paresseux, il est privé de l'information que produit la
+comparaison. Les pays qui ont mis leurs lots régionaux en appel d'offres ont
+découvert, en moyenne, qu'ils payaient trop cher — d'environ
+25 % au train-kilomètre en Allemagne, à
+service comparable.</p>
+<p>La France a ouvert la possibilité en 2019. Six ans plus tard,
+≈ 10 % des services ont été attribués après appel d'offres ; la
+plupart des régions ont prolongé leur convention jusqu'à la date limite, ce que
+la loi leur permettait.</p>
+<div class="note"><div><p>La concurrence dont il est question ici est celle POUR le marché : l'autorité met un lot en appel d'offres et choisit l'exploitant. L'usager, lui, ne change rien à ses habitudes — il ne choisit pas plus son train qu'il ne choisit aujourd'hui l'entreprise qui ramasse ses ordures.</p></div></div></section>
+<section class="cle" id="dette" tabindex="-1"><h3>Troisième défaut : la dette comme mode de financement</h3><p class="reponse">L'État a repris 35 Md€ de dette ferroviaire sans modifier le mécanisme qui l'avait engendrée, et la principale infrastructure en construction est financée par un emprunt remboursable sur cinquante ans.</p>
+<p>La dette de SNCF Réseau venait du financement des lignes à grande vitesse
+par l'emprunt, à des niveaux de trafic qui ne les remboursaient pas. Sa reprise
+par l'État, en deux temps, a soldé le passé. Elle n'a pas touché à la cause :
+un gestionnaire d'infrastructure dont les péages ne couvrent pas les charges
+emprunte la différence, et recommence.</p>
+<p>Le même mécanisme est à l'œuvre aujourd'hui : ≈ 36 Md€ de
+travaux pour le Grand Paris Express, portés par une dette adossée à des taxes
+affectées et remboursable jusque dans les années 2070. L'estimation initiale
+était inférieure de moitié. Aucune des révisions n'a donné lieu à un nouveau
+vote.</p></section>
+<section class="cle" id="projets" tabindex="-1"><h3>Quatrième défaut : on décide, puis on évalue</h3><p class="reponse">L'<span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">évaluation socio-économique</span><span class="bulle" role="note" hidden>Le calcul qui compare ce qu&#x27;un projet coûte à ce qu&#x27;il rapporte à la collectivité — temps gagné, accidents évités, émissions. Elle est obligatoire pour les grands projets, et son résultat n&#x27;a presque jamais empêché une décision déjà prise.</span></span> est obligatoire pour les grands projets. Elle intervient après l'annonce, et n'a presque jamais renversé une décision.</p>
+<p>Le cas le mieux documenté est la liaison Lyon-Turin : ≈ 26 Md€
+annoncés, accès compris, dont la Cour des comptes relevait que les prévisions
+de trafic n'avaient jamais été réactualisées de façon contradictoire. Les voies
+d'accès françaises ne sont à ce jour ni financées, ni décidées.</p>
+<p>Le vice n'est pas propre à ce projet. Il tient à l'ordre des opérations :
+l'annonce vient d'abord, le dossier ensuite, et une évaluation défavorable
+arrive quand l'engagement politique est déjà pris. Une contre-expertise
+indépendante publiée AVANT le vote ne garantit pas la bonne décision ; elle
+garantit qu'on ne pourra pas dire qu'on ne savait pas.</p></section>
+<section class="cle" id="entretien" tabindex="-1"><h3>Cinquième défaut : l&#x27;entretien perd contre le ruban</h3><p class="reponse">Les voies du réseau ferré ont ≈ 29 ans de moyenne, et ≈ 25 000 ponts sont en mauvais état structurel. Renouveler ne s'inaugure pas.</p>
+<p>Un réseau vieillit quand on y investit moins qu'il ne s'use. Les
+ralentissements imposés pour cause de voie dégradée en sont la mesure la plus
+directe : le train met plus longtemps qu'il y a trente ans sur une partie des
+lignes régionales, et ce recul ne figure dans aucun indicateur de
+ponctualité — celui-ci compare l'horaire réel à l'horaire annoncé, lequel a
+été allongé.</p>
+<p>Sur la route, l'inventaire est pire : le rapport sénatorial de 2019 estimait
+≈ 25 000 ponts en mauvais état sur un parc dont il notait qu'aucune
+collectivité ne tenait la liste complète. Un pays qui ne sait pas combien de
+ponts il possède ne peut pas savoir ce que leur entretien coûte.</p>
+<div class="note"><div><p>≈ 91 % des TER sont comptés à l'heure, et ce chiffre rassure à tort : un train est « à l'heure » s'il arrive avec moins de cinq minutes de retard sur un horaire lui-même allongé, et les trains supprimés ne sont pas comptés du tout. C'est le moins sévère des indicateurs possibles.</p></div></div></section>
+<section class="cle" id="interdiction" tabindex="-1"><h3>Sixième défaut : interdire plutôt que faire payer</h3><p class="reponse">Les zones à faibles émissions, le calendrier de fin des moteurs thermiques et les restrictions de vitesse rationnent l'usage par l'interdiction, au lieu d'en faire payer le coût réel.</p>
+<p>Une <span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">ZFE</span><span class="bulle" role="note" hidden>Zone à faibles émissions : un périmètre urbain où la circulation est interdite aux véhicules trop anciens, classés par vignette. L&#x27;interdiction porte sur l&#x27;âge du véhicule, pas sur l&#x27;usage qu&#x27;on en fait : rouler mille kilomètres par an dans une vieille voiture y est interdit, en faire trente mille dans une neuve ne l&#x27;est pas.</span></span> interdit la circulation aux véhicules trop anciens,
+classés par vignette. Le critère est l'âge du véhicule, jamais l'usage : rouler
+mille kilomètres par an dans une vieille voiture y est interdit, en faire trente
+mille dans une neuve ne l'est pas. L'effet distributif est celui qu'on imagine —
+ceux qui changent de voiture le plus rarement sont ceux qui en ont le moins les
+moyens.</p>
+<p>Le même raisonnement vaut pour la fiscalité des carburants : la
+<span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">TICPE</span><span class="bulle" role="note" hidden>Taxe intérieure de consommation sur les produits énergétiques : l&#x27;accise sur les carburants. Elle est due au litre, quel que soit l&#x27;endroit et l&#x27;heure où l&#x27;on roule, et son produit va au budget général — elle ne finance donc pas les routes.</span></span> prélève la même somme au litre en zone rurale et en heure de
+pointe urbaine, alors que les nuisances — congestion, bruit, qualité de l'air —
+diffèrent du tout au tout. Une taxe aveugle au lieu et à l'heure ne peut pas
+corriger un problème qui dépend du lieu et de l'heure.</p></section>
+<section class="cle" id="fret" tabindex="-1"><h3>Et le fret, que personne ne regarde</h3><p class="reponse">La <span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">part modale</span><span class="bulle" role="note" hidden>La part d&#x27;un mode de transport dans l&#x27;ensemble des déplacements ou des tonnes transportées. Elle change de valeur selon qu&#x27;on compte des trajets, des kilomètres ou des tonnes : une comparaison qui ne le précise pas ne veut rien dire.</span></span> du rail dans le transport de marchandises est tombée à ≈ 10 %, contre ≈ 17 % en moyenne européenne.</p>
+<p>Le fret ferroviaire a perdu la moitié de sa part modale en vingt-cinq ans,
+pendant qu'elle progressait en Allemagne et en Autriche. Les causes sont
+connues et cumulatives : des sillons attribués en priorité aux voyageurs, des
+travaux nocturnes qui coupent les itinéraires longs, des
+<span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">péages ferroviaires</span><span class="bulle" role="note" hidden>La redevance que l&#x27;exploitant d&#x27;un train verse au gestionnaire de l&#x27;infrastructure pour emprunter la voie. En France, elle est parmi les plus élevées d&#x27;Europe, et c&#x27;est l&#x27;un des obstacles à l&#x27;entrée de nouveaux opérateurs.</span></span> parmi les plus élevés
+d'Europe, et la disparition progressive des embranchements particuliers qui
+reliaient les usines au réseau.</p>
+<p>Le fret n'a aucun électorat : il ne fait pas d'inauguration et n'apparaît
+dans aucune promesse de campagne. C'est pourtant le segment où le report modal
+serait le plus utile, et celui où la concurrence est déjà ouverte depuis
+2006 — sans que cela suffise.</p></section>
+<details class="section" id="a-garder"><summary><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg><span>Ce qu&#x27;il ne faut surtout pas casser</span></summary><div class="dedans">
+<p>Un diagnostic qui ne trouverait que des défauts serait un tract. Le système
+français a des qualités réelles, et plusieurs sont rares :</p>
+<ul class="serree">
+  <li><strong>Le maillage.</strong> ≈ 27 000 km de lignes exploitées
+  font le deuxième réseau d'Europe. Aucun pays ne le reconstruirait
+  aujourd'hui, et le démailler est irréversible.</li>
+  <li><strong>La grande vitesse.</strong> Le TGV a mis les grandes villes à
+  quelques heures les unes des autres et pris à l'avion l'essentiel du trafic
+  intérieur sur les axes qu'il dessert. C'est une réussite industrielle et
+  d'aménagement.</li>
+  <li><strong>La sécurité.</strong> Le ferroviaire français est l'un des plus
+  sûrs d'Europe. Toute réforme qui toucherait à l'unicité des règles de
+  sécurité ou à l'indépendance de leur contrôle serait une mauvaise
+  réforme.</li>
+  <li><strong>La tarification sociale.</strong> Les réductions pour les jeunes,
+  les familles et les bas revenus sont un choix légitime. Nous proposons de les
+  rendre explicites et financées, pas de les supprimer.</li>
+</ul>
+<p class="discret">Ce sont ces quatre acquis que la dégradation de
+l'infrastructure menace le plus sûrement : un réseau qu'on n'entretient pas se
+ferme tout seul, ligne par ligne, sans que personne n'ait à le décider.</p></div></details>
+
+<div class="creme">
+<p class="surtitre">Ce que vous pouvez faire</p>
+<h2 class="serif" style="margin:0">Six défauts, six mesures.</h2>
+<p>Chacun de ces défauts appelle une mesure précise, avec son mécanisme, son effet attendu et l'objection la plus sérieuse qu'on lui oppose.</p>
+<p class="actions"><a class="bouton" href="reforme.html">La réforme, mesure par mesure</a><a href="comparaisons.html">Ce que font les autres pays</a></p>
+</div>
+
+</main>
+<footer>
+  <p><strong>Ce site est un document politique, pas une source officielle.</strong>
+  Il compare la politique française des transports à une alternative libérale ;
+  il ne vaut ni information tarifaire, ni conseil pour vos trajets. Pour ceux-ci,
+  voir votre autorité organisatrice et
+  <a href="https://www.service-public.fr/">service-public.fr</a>.</p>
+  <p>Tous les chiffres cités sont rassemblés, datés et sourcés sur la page
+  <a href="donnees.html">Données et sources</a>, avec leur degré de fiabilité.
+  Ceux marqués « à vérifier » doivent être confrontés à leur source avant
+  d'être repris dans un débat. Textes et code sur
+  <a href="https://github.com/g-pliberal/Transports">GitHub</a> (code sous licence Apache 2.0, textes sous
+  <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>).</p>
+  <p class="retour-site">Un document du
+  <a href="https://partiliberalfrancais.fr/" target="_top">Parti libéral français</a>. Les autres
+  volets du programme : <a href="https://github.com/g-pliberal/retraitecomptenotionelle">retraites</a> et
+  <a href="https://github.com/g-pliberal/sante">santé</a>.</p>
+</footer>
+<script type="module" src="moteur/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- La couleur du bandeau de tête : sur un téléphone, la barre du navigateur
+     la reprend, et la page commence où elle commence. -->
+<meta name="theme-color" content="#0b3d3a">
+<title>Ce que vos déplacements vous coûtent vraiment — le simulateur</title>
+<meta name="description" content="Taxes sur le carburant, péages, abonnement, subvention de vos propres trajets, concours publics, versement mobilité : six flux, dont quatre invisibles. Le simulateur les additionne dans votre navigateur, sans rien envoyer nulle part.">
+<link rel="icon" href="moteur/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="moteur/icone.svg">
+<link rel="stylesheet" href="moteur/style.css">
+<!-- Écrit par scripts/construire_site.py depuis src/transports/. Ne pas
+     modifier ici : la prochaine construction effacerait la correction. -->
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header class="bandeau"><div class="interieur">
+  <p class="nom"><a href="index.html"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 3.1V7a4 4 0 0 0 8 0V3.1" /><path d="m9 15-1-1" /><path d="m15 15 1-1" /><path d="M9 19c-2.8 0-5-2.2-5-5v-4a8 8 0 0 1 16 0v4c0 2.8-2.2 5-5 5Z" /><path d="m8 19-2 3" /><path d="m16 19 2 3" /></svg><span>Transports : payer ce qu&#x27;on utilise</span></a></p>
+  <nav aria-label="Navigation principale"><span class="groupe"><span class="etiquette">Le programme</span><span class="liens"><a href="index.html">Programme</a></span></span><span class="groupe"><span class="etiquette">Le constat</span><span class="liens"><a href="diagnostic.html">Le système actuel</a><a href="comparaisons.html">Ailleurs</a></span></span><span class="groupe"><span class="etiquette">L&#x27;alternative</span><span class="liens"><a href="reforme.html">La réforme</a><a href="simulateur.html" aria-current="page">Ce que vous payez</a><a href="objections.html">Objections</a></span></span><span class="groupe"><span class="etiquette">La confiance</span><span class="liens"><a href="donnees.html">Données et sources</a></span></span></nav>
+</div></header>
+<main id="contenu" tabindex="-1">
+
+<div class="affiche"><p class="surtitre">Ce que vous payez</p><h1>Vos déplacements vous coûtent <strong class="cle-texte">bien plus</strong> que votre carburant et votre abonnement.</h1><p class="chapeau">Taxes sur le carburant, péages, abonnement, subvention de vos propres trajets, part des concours publics, versement mobilité répercuté : six flux, dont quatre n'apparaissent nulle part en clair. Ce simulateur les additionne. Tout se calcule dans votre navigateur : <strong class="cle-texte">rien n'est envoyé nulle part</strong>.</p></div>
+
+
+<form class="creme simulateur-court" id="formulaire" method="get" action="#resultat">
+  <div class="tete">
+    <h2 class="serif">Et vous, ça fait combien&nbsp;?</h2>
+    <span class="etiquette">Le simulateur</span>
+  </div>
+  <div class="grille">
+    <div>
+      <label for="motorisation">Votre véhicule<span class="aide">celui que
+      vous utilisez le plus</span></label>
+      <select id="motorisation" name="motorisation">
+        <option value="gazole" selected>Voiture au gazole</option>
+        <option value="essence">Voiture à essence</option>
+        <option value="electrique">Voiture électrique</option>
+        <option value="aucune">Pas de voiture</option>
+      </select>
+    </div>
+    <div>
+      <label for="kilometres">Kilomètres par an<span class="aide">la moyenne
+      française est d'environ douze mille</span></label>
+      <input id="kilometres" name="kilometres" type="number" inputmode="numeric"
+             min="0" max="200000" step="500" value="12000">
+    </div>
+    <div>
+      <label for="peages">Péages, par an<span class="aide">ce que vous passez
+      aux barrières</span></label>
+      <input id="peages" name="peages" type="number" inputmode="numeric"
+             min="0" max="10000" step="10" value="150">
+    </div>
+    <div>
+      <label for="reseau">Transport public<span class="aide">celui que vous
+      empruntez</span></label>
+      <select id="reseau" name="reseau">
+        <option value="urbain" selected>Bus, métro, tramway</option>
+        <option value="ter">Train régional</option>
+        <option value="aucun">Aucun</option>
+      </select>
+    </div>
+    <div>
+      <label for="abonnement">Abonnement, par mois<span class="aide">ce que
+      vous payez vous-même</span></label>
+      <input id="abonnement" name="abonnement" type="number" inputmode="numeric"
+             min="0" max="1000" step="1" value="60">
+    </div>
+    <div>
+      <label for="emploi">Vous êtes<span class="aide">le versement mobilité
+      pèse sur les employeurs</span></label>
+      <select id="emploi" name="emploi">
+        <option value="salarie" selected>En emploi</option>
+        <option value="autre">Sans emploi, étudiant ou retraité</option>
+      </select>
+    </div>
+    <div class="action"><button type="submit">Calculer →</button></div>
+  </div>
+  <p class="discret" style="margin:0.9rem 0 0">Deux totaux : ce que vos
+  déplacements vous coûtent visiblement, et ce qu'ils vous coûtent sans que
+  vous le voyiez. Le second est presque toujours le plus grand.</p>
+</form>
+
+
+<div id="resultat" tabindex="-1">
+  <noscript>
+    <div class="erreur">Ce simulateur a besoin de JavaScript : le calcul se
+    fait dans votre navigateur, il n'y a pas de serveur pour le faire à sa
+    place. Les hypothèses et la formule sont lisibles sur la page
+    <a href="donnees.html#simulateur">Données et sources</a>.</div>
+  </noscript>
+</div>
+
+<details class="section" id="methode-simulateur"><summary><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg><span>Comment ce calcul est fait</span></summary><div class="dedans">
+<p>Le simulateur n'a aucun secret : il applique des tarifs publics à des
+kilomètres et à un abonnement saisis, puis décompose le total. Voici la
+formule, dans l'ordre où elle s'applique.</p>
+<h4>Ce que vous voyez passer</h4>
+<ul class="serree">
+  <li><strong>Taxes sur le carburant</strong> : la <span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">TICPE</span><span class="bulle" role="note" hidden>Taxe intérieure de consommation sur les produits énergétiques : l&#x27;accise sur les carburants. Elle est due au litre, quel que soit l&#x27;endroit et l&#x27;heure où l&#x27;on roule, et son produit va au budget général — elle ne finance donc pas les routes.</span></span> —
+  0,5981 € par litre sur le gazole, 0,6829 € par litre sur l'essence —
+  appliquée à votre consommation, plus la TVA qui porte sur un prix incluant
+  déjà cette accise. Pour un véhicule électrique, l'accise sur l'électricité
+  et la TVA correspondante.</li>
+  <li><strong>Péages</strong> : ce que vous déclarez, TVA comprise.</li>
+  <li><strong>Abonnement</strong> : ce que vous versez vous-même, douze fois
+  par an.</li>
+</ul>
+<h4>Ce que vous ne voyez pas</h4>
+<ul class="serree">
+  <li><strong>La subvention de vos propres trajets</strong> : votre
+  abonnement couvre ≈ 20 % du coût d'un réseau urbain,
+  ≈ 25 % de celui d'un TER. Le simulateur en déduit ce
+  que la collectivité verse pour VOS trajets.</li>
+  <li><strong>Votre part des concours publics</strong> :
+  ≈ 30 Md€ de concours aux transports, rapportés à
+  un habitant. C'est un agrégat reconstitué, et la page Données le dit.</li>
+  <li><strong>Le <span class="mot"><span class="terme" role="button" tabindex="0" aria-expanded="false">versement mobilité</span><span class="bulle" role="note" hidden>Un prélèvement assis sur la masse salariale des employeurs d&#x27;au moins onze salariés, perçu au profit de l&#x27;autorité organisatrice. C&#x27;est la première ressource des transports urbains : il finance plus de trajets que les billets, et n&#x27;apparaît sur aucun ticket.</span></span> répercuté</strong> :
+  ≈ 10 Md€ payés par les employeurs, rapportés à un actif
+  occupé. Un prélèvement sur la masse salariale est une part de ce que votre
+  travail rapporte, même s'il ne figure pas sur votre fiche de paie.</li>
+</ul>
+<h4>Ce que la réforme changerait</h4>
+<ul class="serree">
+  <li><strong>La redevance d'usage remplace la taxe au litre</strong>, à
+  prélèvement constant : le simulateur la calcule au kilomètre, pour montrer
+  l'ordre de grandeur de la substitution. Son niveau est une
+  <strong>hypothèse de travail</strong>, pas une mesure.</li>
+  <li><strong>Le reste ne bouge pas</strong> : la subvention de vos trajets
+  et les concours publics restent ce qu'ils sont. Ils deviennent visibles,
+  c'est tout — et c'est le sujet de ce site.</li>
+</ul>
+<div class="note avertissement"><svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img"><title>Attention</title><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg><div><p>Ce simulateur illustre des ORDRES DE GRANDEUR. Il ne prédit ni votre facture, ni le coût de vos trajets, et il ne chiffre pas la réforme à l'échelle du pays — voir <a href='reforme.html#financement'>ce que nous pouvons affirmer et ce que nous ne pouvons pas</a>. Chacune de ses hypothèses est écrite, datée et discutable sur la page <a href='donnees.html#simulateur'>Données et sources</a>.</p></div></div></div></details>
+
+<div class="creme">
+<p class="surtitre">Ce que vous pouvez faire</p>
+<h2 class="serif" style="margin:0">Le total vous surprend ? C'est le sujet.</h2>
+<p>Un prélèvement qu'on ne voit pas n'est jamais discuté. Rendre visible ce que les transports coûtent et à qui est la première mesure de ce programme, et la seule qui ne coûte rien.</p>
+<p class="actions"><a class="bouton" href="reforme.html">La réforme en six mesures</a><a href="diagnostic.html">Pourquoi ça coûte autant</a></p>
+</div>
+
+</main>
+<footer>
+  <p><strong>Ce site est un document politique, pas une source officielle.</strong>
+  Il compare la politique française des transports à une alternative libérale ;
+  il ne vaut ni information tarifaire, ni conseil pour vos trajets. Pour ceux-ci,
+  voir votre autorité organisatrice et
+  <a href="https://www.service-public.fr/">service-public.fr</a>.</p>
+  <p>Tous les chiffres cités sont rassemblés, datés et sourcés sur la page
+  <a href="donnees.html">Données et sources</a>, avec leur degré de fiabilité.
+  Ceux marqués « à vérifier » doivent être confrontés à leur source avant
+  d'être repris dans un débat. Textes et code sur
+  <a href="https://github.com/g-pliberal/Transports">GitHub</a> (code sous licence Apache 2.0, textes sous
+  <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>).</p>
+  <p class="retour-site">Un document du
+  <a href="https://partiliberalfrancais.fr/" target="_top">Parti libéral français</a>. Les autres
+  volets du programme : <a href="https://github.com/g-pliberal/retraitecomptenotionelle">retraites</a> et
+  <a href="https://github.com/g-pliberal/sante">santé</a>.</p>
+</footer>
+<script type="module" src="moteur/js/site.js"></script>
+<script type="module" src="moteur/js/simulateur.js"></script>
+</body>
+</html>
