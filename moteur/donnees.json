@@ -1,0 +1,37 @@
+{
+  "avertissement": "Écrit par scripts/construire_site.py depuis src/transports/donnees.py. Ne pas modifier à la main.",
+  "parametres": {
+    "ticpe_gazole_litre": 0.5981,
+    "ticpe_essence_litre": 0.6829,
+    "tva": 0.2,
+    "conso_gazole_100km": 5.8,
+    "conso_essence_100km": 6.8,
+    "accise_electricite_kwh": 0.0225,
+    "conso_electrique_100kwh": 17.0,
+    "population": 68000000.0,
+    "actifs_occupes": 28000000.0,
+    "concours_publics_transports": 30000000000.0,
+    "versement_mobilite_total": 10000000000.0,
+    "part_recettes_usagers_urbain": 0.2,
+    "part_recettes_usagers_ter": 0.25,
+    "redevance_usage_km": 0.04
+  },
+  "reserves": [
+    {
+      "parametre": "concours_publics_transports",
+      "texte": "Le total des concours publics aux transports est un AGRÉGAT RECONSTITUÉ : il additionne des sources qui n'ont ni le même périmètre ni le même millésime, et il ne comprend ni l'entretien routier des collectivités ni les dépenses fiscales. Il sert à donner un ordre de grandeur par habitant, et rien de plus."
+    },
+    {
+      "parametre": "redevance_usage_km",
+      "texte": "La redevance kilométrique de remplacement est une HYPOTHÈSE DE TRAVAIL, calibrée pour rendre à peu près ce que la taxe sur les carburants rapporte aujourd'hui sur un véhicule moyen. Son niveau réel dépendrait du périmètre retenu, de la modulation par zone et par heure, et d'un débat qui n'a pas eu lieu."
+    },
+    {
+      "parametre": "part_recettes_usagers_urbain",
+      "texte": "Le taux de couverture par les billets varie du simple au double d'un réseau à l'autre, et la moyenne employée ici écrase cette différence. Un réseau gratuit a un taux nul ; le vôtre peut être très loin de la moyenne."
+    },
+    {
+      "parametre": "conso_gazole_100km",
+      "texte": "Les consommations retenues sont des moyennes de parc. La vôtre dépend de votre véhicule, de votre trajet et de votre conduite : le simulateur ne la connaît pas, et ne cherche pas à la deviner."
+    }
+  ]
+}
